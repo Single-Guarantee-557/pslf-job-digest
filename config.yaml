@@ -34,7 +34,7 @@ sources:
   usajobs: true
   adzuna: true
   thejobsapi: true
-  nyc: false   # NYC agency jobs are almost never fully remote; turn on to check anyway
+  nyc: true   # NYC agency jobs are almost never fully remote; turn on to check anyway
 lookback_days: 3     # how far back each run looks; repeats are filtered out
 adzuna_pages: 10     # 50 results per page; 10 pages a day stays within the free tier
 
