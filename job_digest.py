@@ -89,7 +89,7 @@ def norm(text):
 
 def make_job(**kw):
     job = dict(id="", source="", title="", employer="", location="", url="", posted="",
-               closes="", salary="", category="", note="", text="", hits=[])
+               closes="", salary="", category="", note="", text="", hits=[], apply="")
     job.update({k: (v or "") if isinstance(v, str) or v is None else v for k, v in kw.items()})
     return job
 
@@ -295,7 +295,8 @@ def fetch_thejobsapi(cfg):
             jobs.append(make_job(
                 id=f"thejobsapi:{a.get('id')}", source="The Jobs API", title=a.get("title"),
                 employer=a.get("organization"), location=f"Remote ({places})" if places else "Remote",
-                url=a.get("apply_url") or a.get("url"),
+                url=a.get("url") or a.get("apply_url"),
+                apply=a.get("apply_url") if a.get("apply_url") and a.get("apply_url") != a.get("url") else "",
                 posted=(a.get("posted_at") or a.get("first_seen_at") or "")[:10],
                 closes=(a.get("valid_through") or "")[:10],
                 salary=money(sal.get("min"), sal.get("max"), period.get(sal.get("period"), "")) if sal else "",
@@ -361,9 +362,9 @@ def classify(jobs, cfg):
                 cache[key] = list(result)
                 job["category"], job["note"] = result
             else:
-                job["category"], job["note"] = "unknown", "Lookup failed; will retry next run"
+                job["category"], job["note"], job["deferred"] = "unknown", "Lookup failed; will retry next run", True
         else:
-            job["category"], job["note"] = "unknown", "Lookup limit reached; will check next run"
+            job["category"], job["note"], job["deferred"] = "unknown", "Lookup limit reached; will check next run", True
     save_json(EMPLOYER_CACHE, cache)
     log(f"Employer checks: {lookups} new ProPublica lookups")
     return jobs
@@ -383,7 +384,7 @@ main{max-width:860px;margin:auto;padding:24px 16px}h1{font-size:1.6rem;margin:0 
 h2{font-size:1.15rem;margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px}
 h3{font-size:1rem;margin:18px 0 2px}h3+p{margin:0}.muted{color:var(--muted);font-size:.9rem}
 .job{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
-.job a{color:var(--accent);font-weight:600;text-decoration:none}.job a:hover{text-decoration:underline}
+.job a{color:var(--accent);font-weight:600;text-decoration:none}.job a.apply{font-weight:400;font-size:.85rem;margin-left:8px}.job a:hover{text-decoration:underline}
 """ if page else ""
     st = (lambda style: "") if page else (lambda style: f" style='{style}'")  # inline styles only for email
     muted = st("color:#59636e;font-size:13px")
@@ -406,9 +407,11 @@ h3{font-size:1rem;margin:18px 0 2px}h3+p{margin:0}.muted{color:var(--muted);font
                 if j.get("hits"):
                     bits.append("matches: " + ", ".join(j["hits"]))
                 meta = " · ".join(html.escape(b) for b in bits if b)
+                apply = (f" <a class='apply' href='{html.escape(j['apply'])}'{st('color:#0b5cad;font-size:13px')}>Apply directly</a>"
+                         if j.get("apply") else "")
                 out.append(
                     f"<div class='job'{st('border:1px solid #d1d9e0;border-radius:8px;padding:10px 14px;margin:8px 0')}>"
-                    f"<a href='{html.escape(j['url'])}'{st('color:#0b5cad;font-weight:600')}>{html.escape(j['title'])}</a>"
+                    f"<a href='{html.escape(j['url'])}'{st('color:#0b5cad;font-weight:600')}>{html.escape(j['title'])}</a>{apply}"
                     f"<div class='muted'{muted}>{meta}</div>"
                     f"<div class='muted'{muted}>PSLF: {html.escape(j['note'])}</div></div>")
     if not out:
@@ -499,8 +502,14 @@ def main():
     new = [j for j in candidates if j["category"] in allowed]
     log(f"{len(found)} remote postings → {len(unique)} keyword matches → {len(new)} at government/nonprofit employers")
 
-    for job in candidates:  # mark everything checked as seen, so rejects aren't re-checked tomorrow
+    deferred = 0
+    for job in candidates:  # mark checked jobs as seen; jobs whose employer wasn't checked yet come back next run
+        if job.pop("deferred", False):
+            deferred += 1
+            continue
         seen[job["id"]] = TODAY.isoformat()
+    if deferred:
+        log(f"{deferred} jobs held for the next run (employer not checked yet)")
     cutoff = (TODAY - dt.timedelta(days=120)).isoformat()
     save_json(SEEN_FILE, {k: v for k, v in seen.items() if v >= cutoff})
 
