@@ -99,38 +99,6 @@
   {
    "category": "nonprofit",
    "closes": "",
-   "employer": "Gunderson Inc",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5952030762",
-   "location": "Grand Chute, Outagamie County",
-   "note": "IRS 501(c)(3): Gunderson Community Fund Inc (EIN 392760157)",
-   "posted": "2026-11-03",
-   "salary": "$191,526 (est.)",
-   "source": "Adzuna",
-   "title": "Chief Financial Officer",
-   "url": "https://www.adzuna.com/land/ad/5952030762?se=YDYDf7zX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=50D24CC5694B89C69326AD658C5D42F73B392A0C"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "TURING ENTERPRISES, INC.",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5952027573",
-   "location": "US",
-   "note": "IRS 501(c)(3): Turn-joy Enterprise Inc (EIN 820625537)",
-   "posted": "2026-11-03",
-   "salary": "$249,816 (est.)",
-   "source": "Adzuna",
-   "title": "Remote Senior Software Developer",
-   "url": "https://www.adzuna.com/land/ad/5952027573?se=ctlMgLzX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=18F45A7CB7885B80CBEB7E7B1B3CD90833966167"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
    "employer": "Resource Logistics",
    "hits": [
     "data"
@@ -143,22 +111,6 @@
    "source": "Adzuna",
    "title": "SAP ABAP Developer",
    "url": "https://www.adzuna.com/land/ad/5952027550?se=ctlMgLzX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=B5AAE310C32D792B135338386BD34D86A40C2BC7"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "Techridge, Inc.",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5952021652",
-   "location": "US",
-   "note": "IRS 501(c)(3): Techbridge Inc (EIN 582531971)",
-   "posted": "2026-11-03",
-   "salary": "$172,308 (est.)",
-   "source": "Adzuna",
-   "title": "Remote || Hyperscale Supply Chain Sales Director - National and international",
-   "url": "https://www.adzuna.com/land/ad/5952021652?se=4qvzgrzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=632C3E721BD336B79DBD328BF840C50561999D1C"
   },
   {
    "category": "nonprofit",
@@ -207,60 +159,6 @@
    "source": "The Jobs API",
    "title": "Analyst, Manager Research(Public Fixed Income)",
    "url": "https://jobs.ashbyhq.com/mariner-careers/9d7b3af5-5168-4ae0-a8a2-f96f3965bc69/application"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "ServiceNow",
-   "hits": [
-    "health",
-    "equity",
-    "data"
-   ],
-   "id": "thejobsapi:11292713",
-   "location": "Remote (Vienna, VA)",
-   "note": "IRS 501(c)(3): Servenow (EIN 461522377)",
-   "posted": "2026-11-03",
-   "salary": "",
-   "source": "The Jobs API",
-   "title": "Mission Account Director, Department of War",
-   "url": "https://jobs.smartrecruiters.com/ServiceNow/744000159476359-mission-account-director-department-of-war-?oga=true"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "ServiceNow",
-   "hits": [
-    "health",
-    "equity",
-    "data"
-   ],
-   "id": "thejobsapi:11292711",
-   "location": "Remote (Boston, MA)",
-   "note": "IRS 501(c)(3): Servenow (EIN 461522377)",
-   "posted": "2026-11-03",
-   "salary": "",
-   "source": "The Jobs API",
-   "title": "Senior Ethics & Compliance Strategic Program Manager",
-   "url": "https://jobs.smartrecruiters.com/ServiceNow/744000159476799-senior-ethics-compliance-strategic-program-manager-?oga=true"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "Hello Heart",
-   "hits": [
-    "health",
-    "clinical",
-    "equity"
-   ],
-   "id": "thejobsapi:11292659",
-   "location": "Remote (United States)",
-   "note": "IRS 501(c)(3): Helio Hearts Incorporated (EIN 993546312)",
-   "posted": "2026-11-03",
-   "salary": "",
-   "source": "The Jobs API",
-   "title": "Director, Large Employer Sales",
-   "url": "https://job-boards.greenhouse.io/helloheart/jobs/8928839002"
   },
   {
    "category": "nonprofit",
@@ -570,6 +468,482 @@
    "source": "The Jobs API",
    "title": "Summer 2027 AI Services and Platforms Software Engineer Graduate Intern",
    "url": "https://careers.highmarkhealth.org/summer-2027-ai-services-and-platforms-software-engineer-graduate-intern/job/P1-7162740-0"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "MorningStarr",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952096457",
+   "location": "US",
+   "note": "IRS 501(c)(3): Morningstar Inc (EIN 710872013)",
+   "posted": "2026-11-03",
+   "salary": "$93,415 (est.)",
+   "source": "Adzuna",
+   "title": "AI SaaS / Full-Stack Engineer",
+   "url": "https://www.adzuna.com/land/ad/5952096457?se=nOdzWcDX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=571871C668F238577665B70710A3BFF323806A2D"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Talently",
+   "hits": [
+    "equity"
+   ],
+   "id": "adzuna:5952095858",
+   "location": "US",
+   "note": "IRS 501(c)(3): Talenta Inc (EIN 874035259)",
+   "posted": "2026-11-03",
+   "salary": "$161,843 (est.)",
+   "source": "Adzuna",
+   "title": "Engineering Manager, Security Platform",
+   "url": "https://www.adzuna.com/land/ad/5952095858?se=nOdzWcDX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=AA1EB43978957171F549137D2C6E1B2ADD086A28"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Talently",
+   "hits": [
+    "equity"
+   ],
+   "id": "adzuna:5952095113",
+   "location": "US",
+   "note": "IRS 501(c)(3): Talenta Inc (EIN 874035259)",
+   "posted": "2026-11-03",
+   "salary": "$159,084 (est.)",
+   "source": "Adzuna",
+   "title": "Lead Integrations Engineer",
+   "url": "https://www.adzuna.com/land/ad/5952095113?se=IjOcWsDX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=74807A2D7DBEE587725ACD8846CE188A1E07EEBE"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "HealthCare Support",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "adzuna:5952094686",
+   "location": "Allentown, Lehigh County",
+   "note": "IRS 501(c)(3): Village Healthcare Support Inc (EIN 332390242)",
+   "posted": "2026-11-03",
+   "salary": "$158,026 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Pharmacist \u2013 Must Reside in PA",
+   "url": "https://www.adzuna.com/land/ad/5952094686?se=5GfbW8DX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=1731B996335BAB80E9E6D8D63FC6DB8D8FFC33A3"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Pacer Group",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952094233",
+   "location": "Englewood, Arapahoe County",
+   "note": "IRS 501(c)(3): Pace Group Inc (EIN 562016907)",
+   "posted": "2026-11-03",
+   "salary": "$61,288 (est.)",
+   "source": "Adzuna",
+   "title": "Facets Consultant",
+   "url": "https://www.adzuna.com/land/ad/5952094233?se=SEf7XMDX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=9145F38999F7D24D62371998EF31544138D7F816"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Talently",
+   "hits": [
+    "equity"
+   ],
+   "id": "adzuna:5952094220",
+   "location": "US",
+   "note": "IRS 501(c)(3): Talenta Inc (EIN 874035259)",
+   "posted": "2026-11-03",
+   "salary": "$203,080 (est.)",
+   "source": "Adzuna",
+   "title": "Staff Backend Software Engineer",
+   "url": "https://www.adzuna.com/land/ad/5952094220?se=SEf7XMDX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=457CB14159F9D2527F033359738A72DE1659588F"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Talently",
+   "hits": [
+    "equity"
+   ],
+   "id": "adzuna:5952094182",
+   "location": "US",
+   "note": "IRS 501(c)(3): Talenta Inc (EIN 874035259)",
+   "posted": "2026-11-03",
+   "salary": "$134,315 (est.)",
+   "source": "Adzuna",
+   "title": "Forward Deployed Engineer",
+   "url": "https://www.adzuna.com/land/ad/5952094182?se=SEf7XMDX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=BD43708B562DD7F3654F4F5E0DFC2040EC17AFCB"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Stem IT",
+   "hits": [
+    "analyst",
+    "data"
+   ],
+   "id": "adzuna:5952093714",
+   "location": "US",
+   "note": "IRS 501(c)(3): Stem It Up Sports (EIN 931649347)",
+   "posted": "2026-11-03",
+   "salary": "$91,892 (est.)",
+   "source": "Adzuna",
+   "title": "Financial Crimes & Risk Analyst",
+   "url": "https://www.adzuna.com/land/ad/5952093714?se=9Lc3XsDX8RGJF4UBchTzUg&utm_medium=api&utm_source=ff485928&v=238FF531573B0EBA524E64498B3C30AE40B6AE77"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Cobalt",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952093473",
+   "location": "US",
+   "note": "IRS 501(c)(3): Cobalt Foundation (EIN 846050191)",
+   "posted": "2026-11-03",
+   "salary": "$71,079 (est.)",
+   "source": "Adzuna",
+   "title": "Data Scientist, AI & Machine Learning (PhD Student)",
+   "url": "https://www.adzuna.com/land/ad/5952093473?se=9Lc3XsDX8RGJF4UBchTzUg&utm_medium=api&utm_source=ff485928&v=FF97629AED25F8AAB81FB1C81415DD77857C52B7"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "HealthCare Support",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "adzuna:5952092644",
+   "location": "Lancaster, Lancaster County",
+   "note": "IRS 501(c)(3): Village Healthcare Support Inc (EIN 332390242)",
+   "posted": "2026-11-03",
+   "salary": "$158,863 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Pharmacist \u2013 Must Reside in PA",
+   "url": "https://www.adzuna.com/land/ad/5952092644?se=MK-nYMDX8RGtDZBIyhV77A&utm_medium=api&utm_source=ff485928&v=29CA60257C32788B999FC6F848930EB3D6FDA499"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "HealthCare Support",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "adzuna:5952092643",
+   "location": "Bethlehem, Northampton County",
+   "note": "IRS 501(c)(3): Village Healthcare Support Inc (EIN 332390242)",
+   "posted": "2026-11-03",
+   "salary": "$158,088 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Pharmacist \u2013 Must Reside in PA",
+   "url": "https://www.adzuna.com/land/ad/5952092643?se=MK-nYMDX8RGtDZBIyhV77A&utm_medium=api&utm_source=ff485928&v=B4B323A2D7C294730A008EC62C725F3F35AEE21C"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Insight Global",
+   "hits": [
+    "clinical",
+    "health"
+   ],
+   "id": "adzuna:5952092356",
+   "location": "New York, US",
+   "note": "IRS 501(c)(3): Insight Global Initiative (EIN 995034544)",
+   "posted": "2026-11-03",
+   "salary": "$79,323 (est.)",
+   "source": "Adzuna",
+   "title": "Clinical Research Ops Specialist",
+   "url": "https://www.adzuna.com/land/ad/5952092356?se=MK-nYMDX8RGtDZBIyhV77A&utm_medium=api&utm_source=ff485928&v=B6BD0874FA49C6DCF65C1368C8586344BDC9933D"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Pacer Group",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952092287",
+   "location": "Somerset, Somerset County",
+   "note": "IRS 501(c)(3): Pace Group Inc (EIN 562016907)",
+   "posted": "2026-11-03",
+   "salary": "$88,182 (est.)",
+   "source": "Adzuna",
+   "title": "ServiceNow Integration & Data Architect",
+   "url": "https://www.adzuna.com/land/ad/5952092287?se=MK-nYMDX8RGtDZBIyhV77A&utm_medium=api&utm_source=ff485928&v=1F223D5941093609EB00FC0FC9D509C22A5F1181"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Leidos",
+   "hits": [
+    "analyst",
+    "health"
+   ],
+   "id": "adzuna:5952092018",
+   "location": "Atlanta, Fulton County",
+   "note": "IRS 501(c)(3): Leidos Relief Foundation (EIN 203922378)",
+   "posted": "2026-11-03",
+   "salary": "$84,247 (est.)",
+   "source": "Adzuna",
+   "title": "Computer Systems Analyst & Automation Specialist with Security Clearance",
+   "url": "https://www.adzuna.com/land/ad/5952092018?se=_p3kYcDX8RGT9NV5Q-REgg&utm_medium=api&utm_source=ff485928&v=0641CB420EDDEB5A2297936FFBE0F3363530EF2A"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Insight Global",
+   "hits": [
+    "analyst",
+    "data"
+   ],
+   "id": "adzuna:5952091024",
+   "location": "Charlotte, Mecklenburg County",
+   "note": "IRS 501(c)(3): Insight Global Initiative (EIN 995034544)",
+   "posted": "2026-11-03",
+   "salary": "$53,961 (est.)",
+   "source": "Adzuna",
+   "title": "Client Invoicing Analyst",
+   "url": "https://www.adzuna.com/land/ad/5952091024?se=ImAWY8DX8RGJF4UBchTzUg&utm_medium=api&utm_source=ff485928&v=26C891A5D825A1D010757B1825D5476EA2E639BB"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "TURING ENTERPRISES, INC.",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952090864",
+   "location": "US",
+   "note": "IRS 501(c)(3): Turn-joy Enterprise Inc (EIN 820625537)",
+   "posted": "2026-11-03",
+   "salary": "$127,901 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Python/TypeScript Developer",
+   "url": "https://www.adzuna.com/land/ad/5952090864?se=ImAWY8DX8RGJF4UBchTzUg&utm_medium=api&utm_source=ff485928&v=CDFDA5F127C649BE81E8D1E63B2A54B0342B60C0"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Charter Global, Inc.",
+   "hits": [
+    "health",
+    "data"
+   ],
+   "id": "adzuna:5952090833",
+   "location": "US",
+   "note": "IRS 501(c)(3): Global Learning Charter Public School Foundation Inc (EIN 843527681)",
+   "posted": "2026-11-03",
+   "salary": "$149,744 (est.)",
+   "source": "Adzuna",
+   "title": "Data Architect - (Healthcare)",
+   "url": "https://www.adzuna.com/land/ad/5952090833?se=2JRIZMDX8RGGzLXONapFkw&utm_medium=api&utm_source=ff485928&v=11A436A5F5A8BF93E10F06E1FB82D85126A55BC7"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "LHH",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952090506",
+   "location": "Chicago, Cook County",
+   "note": "IRS 501(c)(3): Lhh Foundation (EIN 932146838)",
+   "posted": "2026-11-03",
+   "salary": "$55,610 (est.)",
+   "source": "Adzuna",
+   "title": "Intake & Conflicts Specialist",
+   "url": "https://www.adzuna.com/land/ad/5952090506?se=2JRIZMDX8RGGzLXONapFkw&utm_medium=api&utm_source=ff485928&v=5B28D9AA0B79C870297EB180C0750FCBCBB9D2F9"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "HealthCare Support",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "adzuna:5952090403",
+   "location": "Scranton, Lackawanna County",
+   "note": "IRS 501(c)(3): Village Healthcare Support Inc (EIN 332390242)",
+   "posted": "2026-11-03",
+   "salary": "$164,776 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Pharmacist \u2013 Must Reside in PA",
+   "url": "https://www.adzuna.com/land/ad/5952090403?se=2JRIZMDX8RGGzLXONapFkw&utm_medium=api&utm_source=ff485928&v=7CF632D6E1B524CD403160CCDDFA09A62786772B"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Insight Global",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952090183",
+   "location": "New York, US",
+   "note": "IRS 501(c)(3): Insight Global Initiative (EIN 995034544)",
+   "posted": "2026-11-03",
+   "salary": "$75,753 (est.)",
+   "source": "Adzuna",
+   "title": "Sr Grant Specialist",
+   "url": "https://www.adzuna.com/land/ad/5952090183?se=2JRIZMDX8RGGzLXONapFkw&utm_medium=api&utm_source=ff485928&v=3775A07E3AAC73E7116D89E8113BBE367ED4AC94"
+  },
+  {
+   "apply": "https://recruiting.paylocity.com/Recruiting/Jobs/Apply/4636955",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Minnesota Assistance Council for Veterans",
+   "hits": [
+    "health",
+    "data"
+   ],
+   "id": "thejobsapi:11298482",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Minnesota Assistance Council For Veterans (EIN 411694717)",
+   "posted": "2026-11-03",
+   "salary": "$24 /hr",
+   "source": "The Jobs API",
+   "title": "On-Call Vetlaw Intake Specialist",
+   "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4636955"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Arine",
+   "hits": [
+    "data",
+    "health",
+    "clinical"
+   ],
+   "id": "thejobsapi:11298297",
+   "location": "Remote (California)",
+   "note": "IRS 501(c)(3): Arise (EIN 922561041)",
+   "posted": "2026-11-03",
+   "salary": "$25 /hr",
+   "source": "The Jobs API",
+   "title": "Data Services Intern",
+   "url": "https://ats.rippling.com/arine/jobs/74bd101b-40c8-494b-8f82-68ec50eefa09"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Washington University in St Louis",
+   "hits": [
+    "health",
+    "equity"
+   ],
+   "id": "thejobsapi:11298187",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Assoc Of Chinese Professors At Washington University In St Louis (EIN 920797117)",
+   "posted": "2026-11-03",
+   "salary": "$26 \u2013 $39 /hr",
+   "source": "The Jobs API",
+   "title": "Certified Coder (Remote) - Obstetrics and Gynecology",
+   "url": "https://wustl.wd1.myworkdayjobs.com/External/job/Remote/Certified-Coder--Remote----Obstetrics-and-Gynecology_JR97918"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Washington University in St Louis",
+   "hits": [
+    "health",
+    "equity"
+   ],
+   "id": "thejobsapi:11298185",
+   "location": "Remote (Illinois)",
+   "note": "IRS 501(c)(3): Assoc Of Chinese Professors At Washington University In St Louis (EIN 920797117)",
+   "posted": "2026-11-03",
+   "salary": "$26 \u2013 $39 /hr",
+   "source": "The Jobs API",
+   "title": "Certified Coder (Remote) - Neurology",
+   "url": "https://wustl.wd1.myworkdayjobs.com/External/job/Remote---Illinois/Certified-Coder--Remote----Neurology_JR98449"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Washington University in St Louis",
+   "hits": [
+    "health",
+    "equity"
+   ],
+   "id": "thejobsapi:11298180",
+   "location": "Remote (Missouri)",
+   "note": "IRS 501(c)(3): Assoc Of Chinese Professors At Washington University In St Louis (EIN 920797117)",
+   "posted": "2026-11-03",
+   "salary": "$26 \u2013 $39 /hr",
+   "source": "The Jobs API",
+   "title": "Certified Coder (Remote) - Neurology",
+   "url": "https://wustl.wd1.myworkdayjobs.com/External/job/Remote---Missouri/Certified-Coder--Remote----Neurology_JR98447"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Pitney Bowes Inc",
+   "hits": [
+    "data"
+   ],
+   "id": "thejobsapi:11297884",
+   "location": "Remote (United States, United States)",
+   "note": "IRS 501(c)(3): The Pitney Bowes Foundation Inc (EIN 200523317)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Product Researcher, Experience Design",
+   "url": "https://pitneybowes.wd1.myworkdayjobs.com/PBCareers/job/US-CT-Shelton/Product-Researcher--Experience-Design_R22300"
+  },
+  {
+   "apply": "https://apply.workable.com/j/AD765EE9C8/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Rho Inc",
+   "hits": [
+    "clinical",
+    "nursing",
+    "data"
+   ],
+   "id": "thejobsapi:11296351",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Beta Rho Chapter Sigma Phi Rho Fraternity Inc (EIN 882662976)",
+   "posted": "2026-11-03",
+   "salary": "$55,000 \u2013 $65,000",
+   "source": "The Jobs API",
+   "title": "In-House Clinical Research Associate",
+   "url": "https://apply.workable.com/j/AD765EE9C8"
   }
  ]
 }
