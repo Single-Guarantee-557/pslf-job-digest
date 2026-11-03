@@ -1,24 +1,31 @@
 # PSLF Job Digest
 
-Searches public job sources every morning for health care, government, education,
-and nonprofit roles, checks whether each employer is likely to qualify for Public
-Service Loan Forgiveness (PSLF), and delivers new matches two ways: a daily email and
-a landing page you can bookmark. It runs free on GitHub Actions.
+Finds **remote** jobs at **government and nonprofit** employers every morning and
+delivers new matches as a daily email and a landing page you can bookmark. It runs
+free on GitHub Actions.
+
+## How jobs are filtered
+
+1. **Remote (mandatory).** The posting must clearly say remote, work from home, or
+   anywhere in the U.S., and must not say hybrid. A title or location that says on-site
+   or in-office is also rejected. Location and salary are otherwise ignored.
+2. **Employer (mandatory).** Government employers always pass. Any other employer
+   passes only if its name matches an IRS 501(c)(3) record in ProPublica's Nonprofit
+   Explorer. Set `include_worth_checking: true` to also see uncertain matches.
+3. **Keywords.** The title or description must contain at least one of your keywords.
+   Jobs with more matches are listed first, and each job shows which words matched.
 
 ## Sources
 
-| Source | Covers | Key | PSLF status |
-| --- | --- | --- | --- |
-| USAJOBS API | Federal jobs (VA, HHS, CDC, NIH and more) | Free, by request; usually arrives within a day | All government |
-| NYC Jobs (NYC Open Data) | City agency jobs, including the Health Department | None | All government |
-| Adzuna API | Hospitals, universities, nonprofits, and private employers | Free, instant; about 1,000 calls/month | Checked per employer |
-| ProPublica Nonprofit Explorer | IRS 501(c)(3) records, used to check Adzuna employers | None | — |
+| Source | Covers | Key |
+| --- | --- | --- |
+| USAJOBS API | Remote federal jobs | Free, by request; usually arrives within a day |
+| Adzuna API | Remote jobs nationwide; nonprofits found here are checked against IRS records | Free, instant; about 1,000 calls/month |
+| ProPublica Nonprofit Explorer | IRS 501(c)(3) records for the employer check | None |
+| NYC Jobs (NYC Open Data) | City agency jobs; off by default because they are rarely fully remote | None |
 
-Each Adzuna employer is looked up once in ProPublica and the result is cached, so
-lookups get rarer over time. Jobs are sorted into four groups: government, verified
-501(c)(3) nonprofit, worth checking, and unverified (hidden unless you turn on
-`show_unverified`). Always confirm an employer with the PSLF Help Tool at
-studentaid.gov before relying on it.
+Always confirm an employer with the PSLF Help Tool at studentaid.gov before relying
+on it for PSLF.
 
 ## Setup (about 30 minutes, plus waiting for the USAJOBS key)
 
@@ -45,10 +52,11 @@ studentaid.gov before relying on it.
 
 Edit `config.yaml`. The main settings:
 
-- `search_terms` are sent to the APIs. Each term costs one Adzuna call per location per
-  day, plus one for remote, so 8 terms ≈ 480 calls a month, within the free tier.
-- `title_keywords` decide which results you see. Add as many as you like.
+- `keywords` is your topic list. Add or remove words freely; it costs nothing extra.
+- `include_worth_checking` shows employers that are probably nonprofit or public but
+  didn't match an IRS record exactly, which is common for hospital systems.
 - `employer_overrides` fixes any employer the automatic check gets wrong.
+- `adzuna_pages` controls how many Adzuna results are scanned each day (50 per page).
 
 ## Run on your own computer
 
@@ -61,10 +69,9 @@ python job_digest.py --no-email    # real search, page only
 
 ## Known limits
 
-- NYC Jobs listings have no direct link, so the digest links to a City Jobs search for
-  the Job ID. If a link doesn't land on the posting, search the title on cityjobs.nyc.gov.
-- NYC Health + Hospitals, the NYC Department of Education, CUNY, and New York State
-  agencies post on their own sites and may not appear in NYC Jobs. Adzuna picks up some of these.
-- Adzuna descriptions are excerpts, and salaries marked "(est.)" are Adzuna's estimates.
-- Hospital systems often file under a different legal name, so they tend to land in
-  "Worth checking"; add them to `employer_overrides` once confirmed.
+- Adzuna descriptions are short excerpts, so a remote job that only mentions it deep in
+  the full posting can be missed. Strictness here is deliberate: it keeps hybrid and
+  on-site jobs out.
+- Hospital systems often file taxes under a different legal name, so they may fail the
+  employer check. Add them to `employer_overrides` once you've confirmed them.
+- Salaries marked "(est.)" are Adzuna's estimates.

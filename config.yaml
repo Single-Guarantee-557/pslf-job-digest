@@ -1,57 +1,42 @@
-# ---- What to search for --------------------------------------------------
-# search_terms are sent to USAJOBS and Adzuna. Keep this list short:
-# Adzuna's free tier is about 1,000 calls a month, and each term uses
-# one call per location per day (plus one more if include_remote is on).
-search_terms:
-  - population health
-  - public health
-  - health data analyst
-  - research scientist
-  - nurse educator
-  - clinical informatics
-  - quality improvement
-  - perioperative
+# Every job must pass three filters, in this order.
 
-# A job is kept only if its TITLE contains at least one of these (any case).
-# This list can be long; it costs no API calls.
-title_keywords:
-  - population health
-  - public health
-  - analyst
-  - epidemiolog
-  - informatic
-  - research scientist
-  - evaluation
-  - quality
-  - health equity
-  - nurse educator
-  - nursing education
-  - perioperative
-  - data scien
+# ---- 1. REMOTE (mandatory) -----------------------------------------------
+# The posting must clearly say remote (or work from home / anywhere in the U.S.)
+# and must not say hybrid. Location and salary are ignored.
 
-exclude_title_words: [intern, internship, physician, psychiatrist, dentist, pharmacist, attorney, "medical director", "nurse practitioner"]
-exclude_employers: []
+# ---- 2. EMPLOYER (mandatory) ---------------------------------------------
+# Government employers always pass. Other employers pass only if their name
+# matches an IRS 501(c)(3) record.
+# Set to true to also see "worth checking" jobs, where the employer is probably
+# public or nonprofit but the name match isn't certain (common for hospital systems).
+include_worth_checking: false
+max_employer_lookups: 60   # new IRS lookups per run; results are cached
 
-# ---- Where and how much --------------------------------------------------
-locations: ["New York, NY"]
-radius_miles: 25
-include_remote: true      # extra remote searches on USAJOBS and Adzuna
-min_salary: 70000         # annual; hourly postings are not filtered
-lookback_days: 3          # how far back each run looks; repeats are filtered out
-
-# ---- PSLF employer checks ------------------------------------------------
-nonprofit_state: NY       # state used when matching employers to IRS 501(c)(3) records
-max_employer_lookups: 40  # new ProPublica lookups per run (results are cached)
-show_unverified: false    # true = also list jobs whose employer could not be verified
-
-# Fix any employer the automatic check gets wrong.
-# Values: government, nonprofit, check, unknown
+# Fix any employer the automatic check gets wrong. Values: government, nonprofit, unknown
 employer_overrides:
   "NYC Health + Hospitals": government
   "Mount Sinai": nonprofit
   "NYU Langone Health": nonprofit
   "NewYork-Presbyterian": nonprofit
 
+# ---- 3. KEYWORDS ---------------------------------------------------------
+# The title or description must contain at least one. Matching uses word
+# beginnings, so "analyst" also finds "analysts", but "nurse" does not find
+# "nursing" (listed separately). Jobs with more matches are listed first.
+keywords: [health, clinical, population, analyst, nurse, nursing, equity, perioperative, data]
+
+# Optional: drop jobs whose title or employer contains any of these.
+exclude_title_words: []
+exclude_employers: []
+
+# ---- Sources ---------------------------------------------------------------
+sources:
+  usajobs: true
+  adzuna: true
+  nyc: false   # NYC agency jobs are almost never fully remote; turn on to check anyway
+lookback_days: 3     # how far back each run looks; repeats are filtered out
+adzuna_pages: 10     # 50 results per page; 10 pages a day stays within the free tier
+
 # ---- Digest --------------------------------------------------------------
-page_days: 14             # days of results kept on the landing page
-send_empty_digest: false  # true = email even on days with nothing new
+page_days: 14              # days of results kept on the landing page
+send_empty_digest: false   # true = email even on days with nothing new

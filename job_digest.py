@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""PSLF Job Digest: finds public-service jobs and sends a daily digest.
+"""PSLF Job Digest: finds REMOTE jobs at government and nonprofit employers.
+
+Filters, in order:
+  1. Remote: the posting must clearly say remote and must not say hybrid.
+  2. Employer: government, or a verified IRS 501(c)(3) nonprofit.
+  3. Keywords: the title or description must contain one of your words.
 
 Sources
   USAJOBS (federal)            - free key, every job qualifies as government
@@ -44,8 +49,8 @@ TODAY = dt.date.today()
 
 # PSLF categories, in the order they appear in the digest
 SECTIONS = [
-    ("government", "Government employers", "Federal, state, and city agencies qualify for PSLF."),
-    ("nonprofit", "Verified 501(c)(3) nonprofits", "Employer name matched an IRS 501(c)(3) record."),
+    ("government", "Government employers", "Remote roles at federal, state, and city agencies."),
+    ("nonprofit", "Verified 501(c)(3) nonprofits", "Remote roles; employer matched an IRS 501(c)(3) record."),
     ("check", "Worth checking", "Likely public or nonprofit, but the match is not certain."),
     ("unknown", "Unverified employers", "No public or 501(c)(3) match found."),
 ]
@@ -81,7 +86,7 @@ def norm(text):
 
 def make_job(**kw):
     job = dict(id="", source="", title="", employer="", location="", url="", posted="",
-               closes="", salary="", category="", note="")
+               closes="", salary="", category="", note="", text="", hits=[])
     job.update({k: (v or "") if isinstance(v, str) or v is None else v for k, v in kw.items()})
     return job
 
@@ -98,21 +103,39 @@ def money(lo, hi, suffix=""):
 
 
 # ---------------------------------------------------------------- filters
-def title_ok(job, cfg):
+REMOTE_YES = [r"\bremote\b", r"work from home", r"\bwfh\b", r"telework from anywhere",
+              r"telecommut", r"anywhere in the u\.?s"]
+REMOTE_NO_ANYWHERE = [r"\bhybrid\b", r"not (a )?remote", r"remote not available"]
+REMOTE_NO_HEADLINE = [r"on-?site", r"in[- ]office", r"in[- ]person"]  # checked in title/location only
+
+
+def is_remote(headline, description=""):
+    """headline = title + location. Needs a remote signal and no hybrid/on-site wording."""
+    head, body = (headline or "").lower(), (description or "").lower()
+    if any(re.search(p, head + " " + body) for p in REMOTE_NO_ANYWHERE):
+        return False
+    if any(re.search(p, head) for p in REMOTE_NO_HEADLINE):
+        return False
+    return any(re.search(p, head + " " + body) for p in REMOTE_YES)
+
+
+def keyword_hits(job, cfg):
+    """Return matched keywords; title matches are listed first."""
+    title, body = job["title"].lower(), job.get("text", "").lower()
+    in_title, in_body = [], []
+    for k in cfg["keywords"]:
+        pat = r"\b" + re.escape(k.lower())
+        if re.search(pat, title):
+            in_title.append(k)
+        elif re.search(pat, body):
+            in_body.append(k)
+    return in_title + in_body
+
+
+def excluded(job, cfg):
     title = job["title"].lower()
-    if any(w.lower() in title for w in cfg.get("exclude_title_words", [])):
-        return False
-    if any(e.lower() in job["employer"].lower() for e in cfg.get("exclude_employers", [])):
-        return False
-    return any(k.lower() in title for k in cfg["title_keywords"])
-
-
-def salary_ok(lo, cfg, annual=True):
-    floor = cfg.get("min_salary") or 0
-    try:
-        return not (annual and floor and lo and float(lo) and float(lo) < floor)
-    except ValueError:
-        return True
+    return (any(w.lower() in title for w in cfg.get("exclude_title_words") or []) or
+            any(e.lower() in job["employer"].lower() for e in cfg.get("exclude_employers") or []))
 
 
 # ---------------------------------------------------------------- sources
@@ -122,36 +145,41 @@ def fetch_usajobs(cfg):
         log("USAJOBS: no key set, skipping")
         return []
     headers = {"Host": "data.usajobs.gov", "User-Agent": email, "Authorization-Key": key}
-    places = [{"LocationName": loc, "Radius": cfg["radius_miles"]} for loc in cfg["locations"]]
-    if cfg.get("include_remote"):
-        places.append({"RemoteIndicator": "True"})
-    jobs = []
-    for term in cfg["search_terms"]:
-        for place in places:
-            params = {"Keyword": term, "DatePosted": cfg["lookback_days"], "ResultsPerPage": 250, **place}
-            try:
-                r = requests.get(USAJOBS_URL, headers=headers, params=params, timeout=30)
-                r.raise_for_status()
-                items = r.json().get("SearchResult", {}).get("SearchResultItems", [])
-            except (requests.RequestException, ValueError) as e:
-                log(f"USAJOBS error for '{term}': {e}")
+    jobs, dropped = [], 0
+    for page in range(1, 6):
+        params = {"RemoteIndicator": "True", "DatePosted": cfg["lookback_days"],
+                  "ResultsPerPage": 500, "Page": page}
+        try:
+            r = requests.get(USAJOBS_URL, headers=headers, params=params, timeout=60)
+            r.raise_for_status()
+            items = r.json().get("SearchResult", {}).get("SearchResultItems", [])
+        except (requests.RequestException, ValueError) as e:
+            log(f"USAJOBS error: {e}")
+            break
+        for item in items:
+            d = item.get("MatchedObjectDescriptor", {})
+            details = (d.get("UserArea") or {}).get("Details") or {}
+            flag = details.get("RemoteIndicator")
+            location = d.get("PositionLocationDisplay") or ""
+            remote = flag is True or str(flag).lower() == "true" or is_remote(f"{d.get('PositionTitle')} {location}")
+            if not remote:
+                dropped += 1
                 continue
-            for item in items:
-                d = item.get("MatchedObjectDescriptor", {})
-                pay = (d.get("PositionRemuneration") or [{}])[0]
-                if not salary_ok(pay.get("MinimumRange"), cfg, pay.get("RateIntervalCode") == "PA"):
-                    continue
-                jobs.append(make_job(
-                    id=f"usajobs:{item.get('MatchedObjectId')}", source="USAJOBS",
-                    title=d.get("PositionTitle"), employer=d.get("OrganizationName"),
-                    location=d.get("PositionLocationDisplay"), url=d.get("PositionURI"),
-                    posted=(d.get("PublicationStartDate") or "")[:10],
-                    closes=(d.get("ApplicationCloseDate") or "")[:10],
-                    salary=money(pay.get("MinimumRange"), pay.get("MaximumRange"),
-                                 "" if pay.get("RateIntervalCode") == "PA" else " /hr"),
-                    category="government", note="Federal agency"))
-            time.sleep(0.5)
-    log(f"USAJOBS: {len(jobs)} results")
+            pay = (d.get("PositionRemuneration") or [{}])[0]
+            jobs.append(make_job(
+                id=f"usajobs:{item.get('MatchedObjectId')}", source="USAJOBS",
+                title=d.get("PositionTitle"), employer=d.get("OrganizationName"),
+                location=location, url=d.get("PositionURI"),
+                posted=(d.get("PublicationStartDate") or "")[:10],
+                closes=(d.get("ApplicationCloseDate") or "")[:10],
+                salary=money(pay.get("MinimumRange"), pay.get("MaximumRange"),
+                             "" if pay.get("RateIntervalCode") == "PA" else " /hr"),
+                text=" ".join(str(x) for x in (details.get("JobSummary"), d.get("QualificationSummary")) if x),
+                category="government", note="Federal agency"))
+        if len(items) < 500:
+            break
+        time.sleep(1)
+    log(f"USAJOBS: {len(jobs)} remote postings ({dropped} non-remote dropped)")
     return jobs
 
 
@@ -169,9 +197,10 @@ def fetch_nyc(cfg):
         return []
     jobs = []
     for row in rows:
-        annual = (row.get("salary_frequency") or "").lower() == "annual"
-        if not salary_ok(row.get("salary_range_from"), cfg, annual):
+        text = " ".join(str(row.get(k) or "") for k in ("job_description", "preferred_skills", "additional_information"))
+        if not is_remote(f"{row.get('business_title')} {row.get('work_location')}", text):
             continue
+        annual = (row.get("salary_frequency") or "").lower() == "annual"
         jobs.append(make_job(
             id=f"nyc:{row.get('job_id')}", source="NYC Jobs",
             title=row.get("business_title"), employer=(row.get("agency") or "").title(),
@@ -179,8 +208,8 @@ def fetch_nyc(cfg):
             url=NYC_LINK.format(job_id=quote_plus(str(row.get("job_id", "")))),
             posted=(row.get("posting_date") or "")[:10], closes=(row.get("post_until") or "")[:10],
             salary=money(row.get("salary_range_from"), row.get("salary_range_to"), "" if annual else " /hr"),
-            category="government", note=f"NYC agency · Job ID {row.get('job_id')}"))
-    log(f"NYC Jobs: {len(jobs)} recent external postings")
+            text=text, category="government", note=f"NYC agency · Job ID {row.get('job_id')}"))
+    log(f"NYC Jobs: {len(jobs)} remote postings out of {len(rows)}")
     return jobs
 
 
@@ -189,34 +218,33 @@ def fetch_adzuna(cfg):
     if not (app_id and app_key):
         log("Adzuna: no key set, skipping")
         return []
-    searches = [(t, loc) for t in cfg["search_terms"] for loc in cfg["locations"]]
-    if cfg.get("include_remote"):
-        searches += [(f"{t} remote", None) for t in cfg["search_terms"]]
-    jobs = []
-    for term, loc in searches:
-        params = {"app_id": app_id, "app_key": app_key, "what": term, "results_per_page": 50,
+    jobs, dropped = [], 0
+    for page in range(1, cfg.get("adzuna_pages", 10) + 1):
+        params = {"app_id": app_id, "app_key": app_key, "what": "remote",
+                  "what_or": " ".join(cfg["keywords"]), "results_per_page": 50,
                   "max_days_old": cfg["lookback_days"], "sort_by": "date"}
-        if loc:
-            params.update(where=loc, distance=round(cfg["radius_miles"] * 1.609))
-        if cfg.get("min_salary"):
-            params["salary_min"] = cfg["min_salary"]
         try:
-            r = requests.get(ADZUNA_URL.format(page=1), params=params, timeout=30)
+            r = requests.get(ADZUNA_URL.format(page=page), params=params, timeout=30)
             r.raise_for_status()
             results = r.json().get("results", [])
         except (requests.RequestException, ValueError) as e:
-            log(f"Adzuna error for '{term}': {e}")
-            continue
+            log(f"Adzuna error on page {page}: {e}")
+            break
         for a in results:
+            location = (a.get("location") or {}).get("display_name") or ""
+            if not is_remote(f"{a.get('title')} {location}", a.get("description")):
+                dropped += 1
+                continue
             est = " (est.)" if str(a.get("salary_is_predicted")) == "1" else ""
             jobs.append(make_job(
                 id=f"adzuna:{a.get('id')}", source="Adzuna", title=a.get("title"),
-                employer=(a.get("company") or {}).get("display_name"),
-                location=(a.get("location") or {}).get("display_name"), url=a.get("redirect_url"),
-                posted=(a.get("created") or "")[:10],
+                employer=(a.get("company") or {}).get("display_name"), location=location,
+                url=a.get("redirect_url"), posted=(a.get("created") or "")[:10], text=a.get("description"),
                 salary=money(a.get("salary_min"), a.get("salary_max")) + est if a.get("salary_min") else ""))
+        if len(results) < 50:
+            break
         time.sleep(1)
-    log(f"Adzuna: {len(jobs)} results")
+    log(f"Adzuna: {len(jobs)} remote postings ({dropped} without a clear remote signal dropped)")
     return jobs
 
 
@@ -282,6 +310,10 @@ def classify(jobs, cfg):
 
 
 # ---------------------------------------------------------------- output
+def allowed_categories(cfg):
+    return {"government", "nonprofit"} | ({"check"} if cfg.get("include_worth_checking") else set())
+
+
 def render(jobs_by_day, cfg, page=False):
     css = """
 :root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--card:#f6f8fa;--line:#d1d9e0;--accent:#0b5cad}
@@ -298,17 +330,21 @@ h3{font-size:1rem;margin:18px 0 2px}h3+p{margin:0}.muted{color:var(--muted);font
     out = []
     for day, jobs in jobs_by_day:
         if page:
-            out.append(f"<h2>{html.escape(day)} · {len(jobs)} new</h2>")
+            shown = sum(j["category"] in allowed_categories(cfg) for j in jobs)
+            out.append(f"<h2>{html.escape(day)} · {shown} new</h2>")
         for cat, heading, blurb in SECTIONS:
-            if cat == "unknown" and not cfg.get("show_unverified"):
+            if cat not in allowed_categories(cfg):
                 continue
-            group = sorted((j for j in jobs if j["category"] == cat), key=lambda j: j["title"].lower())
+            group = sorted((j for j in jobs if j["category"] == cat),
+                           key=lambda j: (-len(j.get("hits") or []), j["title"].lower()))
             if not group:
                 continue
             out.append(f"<h3>{heading} ({len(group)})</h3><p class='muted'{st("margin:0;color:#59636e;font-size:13px")}>{blurb}</p>")
             for j in group:
                 bits = [j["employer"], j["location"], j["salary"],
                         f"closes {j['closes']}" if j["closes"] else "", j["source"]]
+                if j.get("hits"):
+                    bits.append("matches: " + ", ".join(j["hits"]))
                 meta = " · ".join(html.escape(b) for b in bits if b)
                 out.append(
                     f"<div class='job'{st('border:1px solid #d1d9e0;border-radius:8px;padding:10px 14px;margin:8px 0')}>"
@@ -316,12 +352,12 @@ h3{font-size:1rem;margin:18px 0 2px}h3+p{margin:0}.muted{color:var(--muted);font
                     f"<div class='muted'{muted}>{meta}</div>"
                     f"<div class='muted'{muted}>PSLF: {html.escape(j['note'])}</div></div>")
     if not out:
-        out.append("<p>No new matching jobs today.</p>")
+        out.append("<p>No new remote government or nonprofit jobs matched today.</p>")
     footer = (f"<p class='muted'{st('color:#59636e;font-size:13px;margin-top:28px')}>PSLF eligibility depends on the "
               "employer and on working full time (30+ hours/week). Confirm any employer with the PSLF Help Tool at "
               "studentaid.gov before relying on it.</p>")
     title = "PSLF Job Digest"
-    body = (f"<h1>{title}</h1><p class='muted'>Updated {TODAY:%A, %B %d, %Y} · "
+    body = (f"<h1>{title}</h1><p class='muted'>Remote only · government and nonprofit · Updated {TODAY:%A, %B %d, %Y} · "
             f"last {cfg.get('page_days', 14)} days</p>" if page else f"<h2 style='margin-top:0'>{title} · {TODAY:%b %d}</h2>")
     doc = body + "".join(out) + footer
     if not page:
@@ -352,17 +388,17 @@ def send_email(html_body, count):
 def demo_jobs():
     j = make_job
     return [
-        j(id="d1", source="NYC Jobs", title="Data Analyst, Bureau of Public Health Clinics",
-          employer="Dept Of Health/Mental Hygiene", location="Queens, NY", url="https://cityjobs.nyc.gov/",
-          salary="$74,536", closes="2026-11-12", category="government", note="NYC agency · Job ID 795522"),
+        j(id="d1", source="USAJOBS", title="Sample: Public Health Data Analyst",
+          employer="Example Federal Agency", location="Anywhere in the U.S. (remote job)", url="https://www.usajobs.gov/",
+          hits=["health", "analyst", "data"], salary="$74,536", closes="2026-11-12", category="government", note="Federal agency"),
         j(id="d2", source="USAJOBS", title="Health Science Specialist", employer="Veterans Health Administration",
-          location="New York, NY", url="https://www.usajobs.gov/", salary="$86,962 – $113,047",
+          location="Anywhere in the U.S. (remote job)", url="https://www.usajobs.gov/", hits=["health"], salary="$86,962 – $113,047",
           category="government", note="Federal agency"),
         j(id="d3", source="Adzuna", title="Population Health Analyst", employer="Example Community Health Center",
-          location="Bronx, NY", url="https://www.adzuna.com/", salary="$80,000 – $95,000 (est.)",
+          location="Remote", url="https://www.adzuna.com/", hits=["population", "health", "analyst"], salary="$80,000 – $95,000 (est.)",
           category="nonprofit", note="IRS 501(c)(3): EXAMPLE COMMUNITY HEALTH CENTER INC (EIN 000000000)"),
         j(id="d4", source="Adzuna", title="Clinical Informatics Specialist", employer="Example University Hospital",
-          location="Manhattan, NY", url="https://www.adzuna.com/", category="check",
+          location="Remote", url="https://www.adzuna.com/", category="check", hits=["clinical"],
           note="Closest 501(c)(3) match: EXAMPLE UNIVERSITY MEDICAL CENTER (EIN 000000000); verify"),
     ]
 
@@ -384,20 +420,31 @@ def main():
         log("Demo written to docs/index.html and demo_email.html")
         return
 
-    found = fetch_usajobs(cfg) + fetch_nyc(cfg) + fetch_adzuna(cfg)
+    src = cfg.get("sources") or {}
+    found = ((fetch_usajobs(cfg) if src.get("usajobs", True) else []) +
+             (fetch_nyc(cfg) if src.get("nyc", False) else []) +
+             (fetch_adzuna(cfg) if src.get("adzuna", True) else []))
+    # Filter 1 (remote) happened inside each fetcher.
     seen = load_json(SEEN_FILE, {})
     unique = {}
     for job in found:
-        if job["id"] not in seen and job["id"] not in unique and title_ok(job, cfg):
+        if job["id"] in seen or job["id"] in unique or excluded(job, cfg):
+            continue
+        job["hits"] = keyword_hits(job, cfg)          # filter 3, checked before the slower employer lookups
+        if job["hits"]:
             unique[job["id"]] = job
-    new = classify(list(unique.values()), cfg)
-    log(f"{len(new)} new matching jobs")
+    candidates = classify(list(unique.values()), cfg)  # filter 2
+    allowed = allowed_categories(cfg)
+    new = [j for j in candidates if j["category"] in allowed]
+    log(f"{len(found)} remote postings → {len(unique)} keyword matches → {len(new)} at government/nonprofit employers")
 
-    for job in new:
+    for job in candidates:  # mark everything checked as seen, so rejects aren't re-checked tomorrow
         seen[job["id"]] = TODAY.isoformat()
     cutoff = (TODAY - dt.timedelta(days=120)).isoformat()
     save_json(SEEN_FILE, {k: v for k, v in seen.items() if v >= cutoff})
 
+    for job in new:
+        job.pop("text", None)
     recent = load_json(RECENT_FILE, {})
     recent[TODAY.isoformat()] = recent.get(TODAY.isoformat(), []) + new
     keep = (TODAY - dt.timedelta(days=cfg.get("page_days", 14))).isoformat()
@@ -407,9 +454,8 @@ def main():
     (DOCS / "index.html").write_text(render(sorted(recent.items(), reverse=True), cfg, page=True))
     log("Landing page updated: docs/index.html")
 
-    shown = [j for j in new if j["category"] != "unknown" or cfg.get("show_unverified")]
-    if not args.no_email and (shown or cfg.get("send_empty_digest")):
-        send_email(render([(TODAY.isoformat(), new)], cfg), len(shown))
+    if not args.no_email and (new or cfg.get("send_empty_digest")):
+        send_email(render([(TODAY.isoformat(), new)], cfg), len(new))
 
 
 if __name__ == "__main__":
