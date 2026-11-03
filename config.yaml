@@ -26,7 +26,7 @@ employer_overrides:
 keywords: [health, clinical, population, analyst, nurse, nursing, equity, perioperative, data]
 
 # Optional: drop jobs whose title or employer contains any of these.
-exclude_title_words: []
+exclude_title_words: [chief, director, senior]
 exclude_employers: []
 
 # ---- Sources ---------------------------------------------------------------
