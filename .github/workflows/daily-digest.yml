@@ -28,6 +28,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          JOBSAPI_KEY: ${{ secrets.JOBSAPI_KEY }}
       - name: Save results and landing page
         run: |
           git config user.name "github-actions[bot]"
