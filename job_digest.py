@@ -371,63 +371,214 @@ def classify(jobs, cfg):
 
 
 # ---------------------------------------------------------------- output
-def allowed_categories(cfg):
-    return {"government", "nonprofit"} | ({"check"} if cfg.get("include_worth_checking") else set())
-
-
-def render(jobs_by_day, cfg, page=False):
-    css = """
-:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--card:#f6f8fa;--line:#d1d9e0;--accent:#0b5cad}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;--card:#151b23;--line:#3d444d;--accent:#4493f8}}
+PAGE_CSS = """
+:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--card:#f6f8fa;--line:#d1d9e0;--accent:#0b5cad;--ok:#1a7f37;--chip:#eaeef2}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;--card:#151b23;--line:#3d444d;--accent:#4493f8;--ok:#3fb950;--chip:#262c36}}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:860px;margin:auto;padding:24px 16px}h1{font-size:1.6rem;margin:0 0 4px}
 h2{font-size:1.15rem;margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px}
 h3{font-size:1rem;margin:18px 0 2px}h3+p{margin:0}.muted{color:var(--muted);font-size:.9rem}
 .job{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
 .job a{color:var(--accent);font-weight:600;text-decoration:none}.job a.apply{font-weight:400;font-size:.85rem;margin-left:8px}.job a:hover{text-decoration:underline}
-""" if page else ""
+.actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+button{font:inherit;font-size:.85rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}button.primary{color:var(--ok);border-color:var(--ok)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 6px}
+.tab{padding:6px 12px;border-radius:999px;background:var(--chip);border-color:transparent;font-weight:600}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--bg)}
+.tab span{font-weight:400;margin-left:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+[hidden]{display:none!important}
+"""
+
+PAGE_JS = r"""
+(function () {
+  var KEY = "pslf-digest-marks-v1";
+  var today = new Date().toISOString().slice(0, 10);
+  var marks = {}, canSave = true, view = "review";
+  try { marks = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { canSave = false; }
+  var cutoff = new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10);
+  Object.keys(marks).forEach(function (id) {   // forget old "hide" marks; applied ones are kept
+    var m = marks[id];
+    if (m && m.hidden && !m.applied && m.hidden < cutoff) delete marks[id];
+  });
+  function $(s) { return document.querySelector(s); }
+  function $$(s, root) { return Array.prototype.slice.call((root || document).querySelectorAll(s)); }
+  function save() {
+    if (!canSave) { $("#storage-warn").hidden = false; return; }
+    try { localStorage.setItem(KEY, JSON.stringify(marks)); }
+    catch (e) { canSave = false; $("#storage-warn").hidden = false; }
+  }
+  function fmt(d) {
+    try { return new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }); }
+    catch (e) { return d; }
+  }
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
+
+  function render() {
+    var cards = $$(".job[data-id]"), toReview = 0, hidden = 0;
+    cards.forEach(function (card) {
+      var m = marks[card.dataset.id] || {};
+      var isApplied = !!m.applied, isHidden = !!m.hidden && !isApplied;
+      if (isHidden) hidden++; else if (!isApplied) toReview++;
+      card.hidden = view === "review" ? (isApplied || isHidden) : view === "hidden" ? !isHidden : true;
+      card.querySelector('[data-act="hide"]').textContent = isHidden ? "Unhide" : "Hide";
+    });
+    $$(".group").forEach(function (g) {
+      var n = $$(".job:not([hidden])", g).length;
+      g.hidden = !n; g.querySelector(".gcount").textContent = n;
+    });
+    $$(".day").forEach(function (d) {
+      var n = $$(".job:not([hidden])", d).length;
+      d.hidden = !n; d.querySelector(".count").textContent = n + (view === "hidden" ? " hidden" : " to review");
+    });
+    var applied = Object.keys(marks).filter(function (id) { return marks[id] && marks[id].applied; })
+      .sort(function (a, b) { return marks[b].applied.localeCompare(marks[a].applied); });
+    $("#count-review").textContent = toReview;
+    $("#count-applied").textContent = applied.length;
+    $("#count-hidden").textContent = hidden;
+
+    var list = $("#applied-list");
+    list.hidden = view !== "applied";
+    list.textContent = "";
+    if (view === "applied") {
+      if (!applied.length) list.appendChild(el("p", "muted", "Nothing marked as applied yet."));
+      applied.forEach(function (id) {
+        var m = marks[id], card = el("div", "job");
+        var link = el("a", "", m.title || "Untitled job");
+        if (/^https?:\/\//.test(m.url || "")) link.href = m.url;
+        card.appendChild(link);
+        card.appendChild(el("div", "muted", (m.employer ? m.employer + " · " : "") + "Applied " + fmt(m.applied)));
+        var actions = el("div", "actions"), undo = el("button", "", "Undo");
+        undo.type = "button"; undo.dataset.undo = id;
+        actions.appendChild(undo); card.appendChild(actions); list.appendChild(card);
+      });
+    }
+    var empty = $("#empty");
+    empty.hidden = view === "applied" || cards.some(function (c) { return !c.hidden; });
+    empty.textContent = view === "hidden" ? "No hidden jobs." : "You're all caught up. New jobs appear here each morning.";
+    $$(".tab").forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.view === view)); });
+  }
+
+  document.addEventListener("click", function (e) {
+    var tab = e.target.closest(".tab");
+    if (tab) { view = tab.dataset.view; render(); return; }
+    var btn = e.target.closest("button[data-act]");
+    if (btn) {
+      var card = btn.closest(".job"), id = card.dataset.id, m = marks[id] || {};
+      if (btn.dataset.act === "applied") {
+        marks[id] = { applied: today, title: card.dataset.title, employer: card.dataset.employer, url: card.dataset.url };
+      } else if (m.hidden) {
+        delete m.hidden;
+        if (Object.keys(m).length) marks[id] = m; else delete marks[id];
+      } else {
+        m.hidden = today; marks[id] = m;
+      }
+      save(); render(); return;
+    }
+    var undo = e.target.closest("button[data-undo]");
+    if (undo) { delete marks[undo.dataset.undo]; save(); render(); }
+  });
+
+  $("#export").addEventListener("click", function () {
+    var blob = new Blob([JSON.stringify(marks, null, 1)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = "pslf-digest-marks-" + today + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $("#import").addEventListener("click", function () { $("#import-file").click(); });
+  $("#import-file").addEventListener("change", function (e) {
+    var file = e.target.files[0]; if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(reader.result);
+        if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("bad file");
+        Object.keys(data).forEach(function (id) { if (data[id] && typeof data[id] === "object") marks[id] = data[id]; });
+        save(); render(); alert("Marks imported.");
+      } catch (err) { alert("That file doesn't look like an export from this page."); }
+      e.target.value = "";
+    };
+    reader.readAsText(file);
+  });
+  if (!canSave) $("#storage-warn").hidden = false;
+  render();
+})();
+"""
+
+
+def allowed_categories(cfg):
+    return {"government", "nonprofit"} | ({"check"} if cfg.get("include_worth_checking") else set())
+
+
+def render(jobs_by_day, cfg, page=False):
+    esc = html.escape
     st = (lambda style: "") if page else (lambda style: f" style='{style}'")  # inline styles only for email
     muted = st("color:#59636e;font-size:13px")
+    allowed = allowed_categories(cfg)
     out = []
     for day, jobs in jobs_by_day:
+        day_jobs = [j for j in jobs if j["category"] in allowed]
         if page:
-            shown = sum(j["category"] in allowed_categories(cfg) for j in jobs)
-            out.append(f"<h2>{html.escape(day)} · {shown} new</h2>")
-        for cat, heading, blurb in SECTIONS:
-            if cat not in allowed_categories(cfg):
+            if not day_jobs:
                 continue
-            group = sorted((j for j in jobs if j["category"] == cat),
+            out.append(f"<section class='day'><h2>{esc(day)} · <span class='count'>{len(day_jobs)} new</span></h2>")
+        for cat, heading, blurb in SECTIONS:
+            if cat not in allowed:
+                continue
+            group = sorted((j for j in day_jobs if j["category"] == cat),
                            key=lambda j: (-len(j.get("hits") or []), j["title"].lower()))
             if not group:
                 continue
-            out.append(f"<h3>{heading} ({len(group)})</h3><p class='muted'{st("margin:0;color:#59636e;font-size:13px")}>{blurb}</p>")
+            if page:
+                out.append(f"<section class='group'><h3>{heading} (<span class='gcount'>{len(group)}</span>)</h3>"
+                           f"<p class='muted'>{blurb}</p>")
+            else:
+                out.append(f"<h3>{heading} ({len(group)})</h3><p{st('margin:0;color:#59636e;font-size:13px')}>{blurb}</p>")
             for j in group:
                 bits = [j["employer"], j["location"], j["salary"],
                         f"closes {j['closes']}" if j["closes"] else "", j["source"]]
                 if j.get("hits"):
                     bits.append("matches: " + ", ".join(j["hits"]))
-                meta = " · ".join(html.escape(b) for b in bits if b)
-                apply = (f" <a class='apply' href='{html.escape(j['apply'])}'{st('color:#0b5cad;font-size:13px')}>Apply directly</a>"
+                meta = " · ".join(esc(b) for b in bits if b)
+                apply = (f" <a class='apply' href='{esc(j['apply'])}'{st('color:#0b5cad;font-size:13px')}>Apply directly</a>"
                          if j.get("apply") else "")
+                data = (f" data-id='{esc(j['id'])}' data-title='{esc(j['title'])}'"
+                        f" data-employer='{esc(j['employer'])}' data-url='{esc(j['url'])}'") if page else ""
+                actions = ("<div class='actions'><button type='button' class='primary' data-act='applied'>Mark applied</button>"
+                           "<button type='button' data-act='hide'>Hide</button></div>") if page else ""
                 out.append(
-                    f"<div class='job'{st('border:1px solid #d1d9e0;border-radius:8px;padding:10px 14px;margin:8px 0')}>"
-                    f"<a href='{html.escape(j['url'])}'{st('color:#0b5cad;font-weight:600')}>{html.escape(j['title'])}</a>{apply}"
+                    f"<div class='job'{data}{st('border:1px solid #d1d9e0;border-radius:8px;padding:10px 14px;margin:8px 0')}>"
+                    f"<a href='{esc(j['url'])}'{st('color:#0b5cad;font-weight:600')}>{esc(j['title'])}</a>{apply}"
                     f"<div class='muted'{muted}>{meta}</div>"
-                    f"<div class='muted'{muted}>PSLF: {html.escape(j['note'])}</div></div>")
-    if not out:
-        out.append("<p>No new remote government or nonprofit jobs matched today.</p>")
+                    f"<div class='muted'{muted}>PSLF: {esc(j['note'])}</div>{actions}</div>")
+            if page:
+                out.append("</section>")
+        if page:
+            out.append("</section>")
     footer = (f"<p class='muted'{st('color:#59636e;font-size:13px;margin-top:28px')}>PSLF eligibility depends on the "
               "employer and on working full time (30+ hours/week). Confirm any employer with the PSLF Help Tool at "
               "studentaid.gov before relying on it.</p>")
     title = "PSLF Job Digest"
-    body = (f"<h1>{title}</h1><p class='muted'>Remote only · government and nonprofit · Updated {TODAY:%A, %B %d, %Y} · "
-            f"last {cfg.get('page_days', 14)} days</p>" if page else f"<h2 style='margin-top:0'>{title} · {TODAY:%b %d}</h2>")
-    doc = body + "".join(out) + footer
     if not page:
+        if not out:
+            out.append("<p>No new remote government or nonprofit jobs matched today.</p>")
+        doc = f"<h2 style='margin-top:0'>{title} · {TODAY:%b %d}</h2>" + "".join(out) + footer
         return f"<div style='font-family:Arial,sans-serif;max-width:720px'>{doc}</div>"
+    header = (f"<h1>{title}</h1><p class='muted'>Remote only · government and nonprofit · Updated "
+              f"{TODAY:%A, %B %d, %Y} · last {cfg.get('page_days', 14)} days</p>"
+              "<div class='tabs' role='tablist'>"
+              "<button type='button' class='tab' role='tab' data-view='review'>To review<span id='count-review'></span></button>"
+              "<button type='button' class='tab' role='tab' data-view='applied'>Applied<span id='count-applied'></span></button>"
+              "<button type='button' class='tab' role='tab' data-view='hidden'>Hidden<span id='count-hidden'></span></button></div>"
+              "<div class='tools'><span class='muted'>Marks are saved in this browser only.</span>"
+              "<button type='button' id='export'>Export marks</button><button type='button' id='import'>Import marks</button>"
+              "<input type='file' id='import-file' accept='.json,application/json' hidden></div>"
+              "<p id='storage-warn' class='muted' hidden>This browser is blocking storage, so marks won't be saved after you leave the page.</p>")
+    doc = header + "".join(out) + "<div id='applied-list' hidden></div><p id='empty' class='muted' hidden></p>" + footer
     return (f"<!doctype html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'><title>{title}</title>"
-            f"<style>{css}</style></head><body><main>{doc}</main></body></html>")
+            f"<style>{PAGE_CSS}</style></head><body><main>{doc}</main><script>{PAGE_JS}</script></body></html>")
 
 
 def send_email(html_body, count):
@@ -490,13 +641,18 @@ def main():
              (fetch_thejobsapi(cfg) if src.get("thejobsapi", True) else []))
     # Filter 1 (remote) happened inside each fetcher.
     seen = load_json(SEEN_FILE, {})
-    unique = {}
+    unique, skipped = {}, 0
     for job in found:
-        if job["id"] in seen or job["id"] in unique or excluded(job, cfg):
+        if job["id"] in seen or job["id"] in unique:
+            continue
+        if excluded(job, cfg):
+            skipped += 1
             continue
         job["hits"] = keyword_hits(job, cfg)          # filter 3, checked before the slower employer lookups
         if job["hits"]:
             unique[job["id"]] = job
+    log(f"Exclusions: {skipped} new jobs dropped by exclude_title_words/exclude_employers "
+        f"(currently {cfg.get('exclude_title_words') or []})")
     candidates = classify(list(unique.values()), cfg)  # filter 2
     allowed = allowed_categories(cfg)
     new = [j for j in candidates if j["category"] in allowed]
@@ -519,6 +675,11 @@ def main():
     recent[TODAY.isoformat()] = recent.get(TODAY.isoformat(), []) + new
     keep = (TODAY - dt.timedelta(days=cfg.get("page_days", 14))).isoformat()
     recent = {d: js for d, js in recent.items() if d >= keep}
+    before = sum(len(js) for js in recent.values())  # re-apply current exclusions to jobs saved earlier
+    recent = {d: [x for x in js if not excluded(x, cfg)] for d, js in recent.items()}
+    removed = before - sum(len(js) for js in recent.values())
+    if removed:
+        log(f"Removed {removed} previously saved jobs that match your current exclusions")
     save_json(RECENT_FILE, recent)
     DOCS.mkdir(exist_ok=True)
     (DOCS / "index.html").write_text(render(sorted(recent.items(), reverse=True), cfg, page=True))
