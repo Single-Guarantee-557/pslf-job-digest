@@ -1,3 +1,316 @@
 {
- "2026-11-03": []
+ "2026-11-03": [
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Aspire Health Partners",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952042343",
+   "location": "Orlando, Orange County",
+   "note": "IRS 501(c)(3): Aspire Health Partners Inc (EIN 592301233)",
+   "posted": "2026-11-03",
+   "salary": "$70,490 (est.)",
+   "source": "Adzuna",
+   "title": "NETWORK ADMINISTRATOR",
+   "url": "https://www.adzuna.com/land/ad/5952042343?se=atR7fLzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=8DCBE0F1355B019CC378A23BAD788B96B690B15A"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Molina Healthcare",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952031071",
+   "location": "Salmon Creek, Clark County",
+   "note": "IRS 501(c)(3): Molina Healthcare Charitable Foundation (EIN 851496438)",
+   "posted": "2026-11-03",
+   "salary": "$76,268 (est.)",
+   "source": "Adzuna",
+   "title": "Care Manager / Case Mgr (RN) Remote (WA Pref) Must Have Compact Licensure",
+   "url": "https://www.adzuna.com/land/ad/5952031071?se=OnLBfbzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=6C79B2AAF2FFD6EB4E07A1F56EB998E61CEB71FE"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Molina Healthcare",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952031068",
+   "location": "Parkland, Pierce County",
+   "note": "IRS 501(c)(3): Molina Healthcare Charitable Foundation (EIN 851496438)",
+   "posted": "2026-11-03",
+   "salary": "$69,397 (est.)",
+   "source": "Adzuna",
+   "title": "Care Manager / Case Mgr (RN) Remote (WA Pref) Must Have Compact Licensure",
+   "url": "https://www.adzuna.com/land/ad/5952031068?se=OnLBfbzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=2F0B0F25DE4EC2F916112E3474B960DB77F014D5"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Molina Healthcare",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952031075",
+   "location": "Shadle Garland, Spokane County",
+   "note": "IRS 501(c)(3): Molina Healthcare Charitable Foundation (EIN 851496438)",
+   "posted": "2026-11-03",
+   "salary": "$63,404 (est.)",
+   "source": "Adzuna",
+   "title": "Care Manager / Case Mgr (RN) Remote (WA Pref) Must Have Compact Licensure",
+   "url": "https://www.adzuna.com/land/ad/5952031075?se=OnLBfbzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=9BD41CE2318446F69C621226362CD666D19AD76C"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Molina Healthcare",
+   "hits": [
+    "health"
+   ],
+   "id": "adzuna:5952031069",
+   "location": "Pioneer Square, King County",
+   "note": "IRS 501(c)(3): Molina Healthcare Charitable Foundation (EIN 851496438)",
+   "posted": "2026-11-03",
+   "salary": "$69,180 (est.)",
+   "source": "Adzuna",
+   "title": "Care Manager / Case Mgr (RN) Remote (WA Pref) Must Have Compact Licensure",
+   "url": "https://www.adzuna.com/land/ad/5952031069?se=OnLBfbzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=04C9A0CECC1FA4851B8333846B64326D51454004"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Comprehensive Resources Inc.",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952031040",
+   "location": "US",
+   "note": "IRS 501(c)(3): Comprehensive Housing Resources Inc (EIN 300622312)",
+   "posted": "2026-11-03",
+   "salary": "$242,154 (est.)",
+   "source": "Adzuna",
+   "title": "Forward Deployed Architect",
+   "url": "https://www.adzuna.com/land/ad/5952031040?se=YDYDf7zX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=C292F256D17A4E399A71764B54F01B9AC55AA941"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Gunderson Inc",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952030762",
+   "location": "Grand Chute, Outagamie County",
+   "note": "IRS 501(c)(3): Gunderson Community Fund Inc (EIN 392760157)",
+   "posted": "2026-11-03",
+   "salary": "$191,526 (est.)",
+   "source": "Adzuna",
+   "title": "Chief Financial Officer",
+   "url": "https://www.adzuna.com/land/ad/5952030762?se=YDYDf7zX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=50D24CC5694B89C69326AD658C5D42F73B392A0C"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "TURING ENTERPRISES, INC.",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952027573",
+   "location": "US",
+   "note": "IRS 501(c)(3): Turn-joy Enterprise Inc (EIN 820625537)",
+   "posted": "2026-11-03",
+   "salary": "$249,816 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Senior Software Developer",
+   "url": "https://www.adzuna.com/land/ad/5952027573?se=ctlMgLzX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=18F45A7CB7885B80CBEB7E7B1B3CD90833966167"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Resource Logistics",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952027550",
+   "location": "US",
+   "note": "IRS 501(c)(3): Vision Restoration Resource Center & Pathway To Logistics Employment (EIN 414914577)",
+   "posted": "2026-11-03",
+   "salary": "$116,481 (est.)",
+   "source": "Adzuna",
+   "title": "SAP ABAP Developer",
+   "url": "https://www.adzuna.com/land/ad/5952027550?se=ctlMgLzX8RGUh96SGHoxpQ&utm_medium=api&utm_source=ff485928&v=B5AAE310C32D792B135338386BD34D86A40C2BC7"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Techridge, Inc.",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952021652",
+   "location": "US",
+   "note": "IRS 501(c)(3): Techbridge Inc (EIN 582531971)",
+   "posted": "2026-11-03",
+   "salary": "$172,308 (est.)",
+   "source": "Adzuna",
+   "title": "Remote || Hyperscale Supply Chain Sales Director - National and international",
+   "url": "https://www.adzuna.com/land/ad/5952021652?se=4qvzgrzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=632C3E721BD336B79DBD328BF840C50561999D1C"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "TURING ENTERPRISES, INC.",
+   "hits": [
+    "analyst"
+   ],
+   "id": "adzuna:5952021609",
+   "location": "US",
+   "note": "IRS 501(c)(3): Turn-joy Enterprise Inc (EIN 820625537)",
+   "posted": "2026-11-03",
+   "salary": "$99,497 (est.)",
+   "source": "Adzuna",
+   "title": "Remote Business Analyst - US",
+   "url": "https://www.adzuna.com/land/ad/5952021609?se=4qvzgrzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=3DB70EE14562B1D9B5035A6F44C4745AEB87D5F9"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "TURING ENTERPRISES, INC.",
+   "hits": [
+    "data"
+   ],
+   "id": "adzuna:5952021605",
+   "location": "US",
+   "note": "IRS 501(c)(3): Turn-joy Enterprise Inc (EIN 820625537)",
+   "posted": "2026-11-03",
+   "salary": "$416,000",
+   "source": "Adzuna",
+   "title": "Remote Software Developer ($200/hr)",
+   "url": "https://www.adzuna.com/land/ad/5952021605?se=4qvzgrzX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=32C1FFC11D6B4DEE1770BC9716549DBA6F925F33"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Mariner",
+   "hits": [
+    "analyst"
+   ],
+   "id": "thejobsapi:11292861",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Mariner Foundation (EIN 454997770)",
+   "posted": "2026-11-03",
+   "salary": "$73,000 \u2013 $148,000",
+   "source": "The Jobs API",
+   "title": "Analyst, Manager Research(Public Fixed Income)",
+   "url": "https://jobs.ashbyhq.com/mariner-careers/9d7b3af5-5168-4ae0-a8a2-f96f3965bc69/application"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "ServiceNow",
+   "hits": [
+    "health",
+    "equity",
+    "data"
+   ],
+   "id": "thejobsapi:11292713",
+   "location": "Remote (Vienna, VA)",
+   "note": "IRS 501(c)(3): Servenow (EIN 461522377)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Mission Account Director, Department of War",
+   "url": "https://jobs.smartrecruiters.com/ServiceNow/744000159476359-mission-account-director-department-of-war-?oga=true"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "ServiceNow",
+   "hits": [
+    "health",
+    "equity",
+    "data"
+   ],
+   "id": "thejobsapi:11292711",
+   "location": "Remote (Boston, MA)",
+   "note": "IRS 501(c)(3): Servenow (EIN 461522377)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Senior Ethics & Compliance Strategic Program Manager",
+   "url": "https://jobs.smartrecruiters.com/ServiceNow/744000159476799-senior-ethics-compliance-strategic-program-manager-?oga=true"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Hello Heart",
+   "hits": [
+    "health",
+    "clinical",
+    "equity"
+   ],
+   "id": "thejobsapi:11292659",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Helio Hearts Incorporated (EIN 993546312)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Director, Large Employer Sales",
+   "url": "https://job-boards.greenhouse.io/helloheart/jobs/8928839002"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Henry Ford Health",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "thejobsapi:11292577",
+   "location": "Remote (Troy, MI)",
+   "note": "IRS 501(c)(3): Henry Ford Health System (EIN 381357020)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Central Authorization Specialist",
+   "url": "https://jobs.smartrecruiters.com/HenryFordHealth1/3743990016596927-central-authorization-specialist?oga=true"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Henry Ford Health",
+   "hits": [
+    "health",
+    "clinical"
+   ],
+   "id": "thejobsapi:11292576",
+   "location": "Remote (Troy, MI)",
+   "note": "IRS 501(c)(3): Henry Ford Health System (EIN 381357020)",
+   "posted": "2026-11-03",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Central Authorization Specialist",
+   "url": "https://jobs.smartrecruiters.com/HenryFordHealth1/3743990016597206-central-authorization-specialist?oga=true"
+  },
+  {
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "SOUTH COLLEGE",
+   "hits": [
+    "data"
+   ],
+   "id": "thejobsapi:11292470",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): College Hockey South (EIN 881606981)",
+   "posted": "2026-11-03",
+   "salary": "$56 /hr",
+   "source": "The Jobs API",
+   "title": "AI & Educational Technology Specialist",
+   "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Apply/4637371"
+  }
+ ]
 }
