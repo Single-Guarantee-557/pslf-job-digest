@@ -33,9 +33,16 @@ exclude_employers: []
 sources:
   usajobs: true
   adzuna: true
+  thejobsapi: true
   nyc: false   # NYC agency jobs are almost never fully remote; turn on to check anyway
 lookback_days: 3     # how far back each run looks; repeats are filtered out
 adzuna_pages: 10     # 50 results per page; 10 pages a day stays within the free tier
+
+# The Jobs API bills by jobs returned and requests made. The free trial allows
+# 500 jobs and 50 requests per week, so these defaults stay under it.
+thejobsapi_max_jobs: 70       # jobs fetched per run
+thejobsapi_max_requests: 5    # requests per run
+thejobsapi_window: 24h        # 1h, 24h, 7d, 30d or 6m; 24h suits a daily run
 
 # ---- Digest --------------------------------------------------------------
 page_days: 14              # days of results kept on the landing page

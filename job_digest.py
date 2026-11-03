@@ -11,6 +11,8 @@ Sources
   NYC Jobs (NYC Open Data)     - no key, every job qualifies as government
   Adzuna (aggregator)          - free key, employer checked against IRS 501(c)(3)
                                  records via ProPublica Nonprofit Explorer (no key)
+  The Jobs API (thejobsapi.com) - paid key with a 7-day trial; jobs from employers'
+                                 own career sites, checked the same way as Adzuna
 
 Run:  python job_digest.py            fetch, update the landing page, send email
       python job_digest.py --no-email fetch and update the page only
@@ -43,6 +45,7 @@ USAJOBS_URL = "https://data.usajobs.gov/api/search"
 NYC_URL = "https://data.cityofnewyork.us/resource/kpav-sd4t.json"
 NYC_LINK = "https://cityjobs.nyc.gov/jobs?keyword={job_id}"  # dataset has no direct link; this searches by Job ID
 ADZUNA_URL = "https://api.adzuna.com/v1/api/jobs/us/search/{page}"
+THEJOBSAPI_URL = "https://api.thejobsapi.com/v1/jobs"
 PROPUBLICA_URL = "https://projects.propublica.org/nonprofits/api/v2/search.json"
 
 TODAY = dt.date.today()
@@ -248,6 +251,63 @@ def fetch_adzuna(cfg):
     return jobs
 
 
+def fetch_thejobsapi(cfg):
+    key = os.getenv("JOBSAPI_KEY")
+    if not key:
+        log("The Jobs API: no key set, skipping")
+        return []
+    headers = {"Authorization": f"Bearer {key}"}
+    max_jobs = cfg.get("thejobsapi_max_jobs", 70)
+    query = " OR ".join(f"{k}*" for k in cfg["keywords"])  # any keyword, prefix match
+    base = {"q": query, "remote": "true", "window": cfg.get("thejobsapi_window", "24h"),
+            "description": "text", "country": "US"}
+    jobs, dropped, cursor, requests_made = [], 0, None, 0
+    while len(jobs) + dropped < max_jobs and requests_made < cfg.get("thejobsapi_max_requests", 5):
+        params = dict(base, limit=min(100, max_jobs - len(jobs) - dropped))
+        if cursor:
+            params["cursor"] = cursor
+        try:
+            r = requests.get(THEJOBSAPI_URL, headers=headers, params=params, timeout=30)
+            requests_made += 1
+            if r.status_code == 400 and "country" in base and not cursor:
+                log(f"The Jobs API rejected country=US ({r.json().get('detail')}); retrying with location")
+                base.pop("country")
+                base["location"] = "United States"
+                continue
+            if r.status_code in (402, 403):
+                log("The Jobs API: trial ended or plan inactive (see thejobsapi.com dashboard), skipping")
+                break
+            if r.status_code == 429:
+                log(f"The Jobs API: allowance used up or rate limited ({r.json().get('quota_exceeded') or 'rate'}), skipping")
+                break
+            r.raise_for_status()
+            data = r.json()
+        except (requests.RequestException, ValueError) as e:
+            log(f"The Jobs API error: {e}")
+            break
+        for a in data.get("jobs", []):
+            if a.get("work_arrangement") not in (None, "remote") or a.get("remote") is not True:
+                dropped += 1  # filter 1: only fully remote, never hybrid
+                continue
+            places = ", ".join(l.get("label", "") for l in (a.get("locations") or [])[:2] if l.get("label"))
+            sal = a.get("salary") or {}
+            period = {"YEAR": "", "HOUR": " /hr", "MONTH": " /month", "WEEK": " /week", "DAY": " /day"}
+            jobs.append(make_job(
+                id=f"thejobsapi:{a.get('id')}", source="The Jobs API", title=a.get("title"),
+                employer=a.get("organization"), location=f"Remote ({places})" if places else "Remote",
+                url=a.get("apply_url") or a.get("url"),
+                posted=(a.get("posted_at") or a.get("first_seen_at") or "")[:10],
+                closes=(a.get("valid_through") or "")[:10],
+                salary=money(sal.get("min"), sal.get("max"), period.get(sal.get("period"), "")) if sal else "",
+                text=a.get("description_text")))
+        cursor = data.get("next_cursor")
+        if not cursor:
+            break
+        time.sleep(1)
+    log(f"The Jobs API: {len(jobs)} remote postings ({dropped} hybrid/unclear dropped, {requests_made} requests)")
+    return jobs
+
+
 # ---------------------------------------------------------------- PSLF check
 def name_score(employer, org_name):
     a, b = norm(employer), norm(org_name)
@@ -423,7 +483,8 @@ def main():
     src = cfg.get("sources") or {}
     found = ((fetch_usajobs(cfg) if src.get("usajobs", True) else []) +
              (fetch_nyc(cfg) if src.get("nyc", False) else []) +
-             (fetch_adzuna(cfg) if src.get("adzuna", True) else []))
+             (fetch_adzuna(cfg) if src.get("adzuna", True) else []) +
+             (fetch_thejobsapi(cfg) if src.get("thejobsapi", True) else []))
     # Filter 1 (remote) happened inside each fetcher.
     seen = load_json(SEEN_FILE, {})
     unique = {}

@@ -21,6 +21,7 @@ free on GitHub Actions.
 | --- | --- | --- |
 | USAJOBS API | Remote federal jobs | Free, by request; usually arrives within a day |
 | Adzuna API | Remote jobs nationwide; nonprofits found here are checked against IRS records | Free, instant; about 1,000 calls/month |
+| The Jobs API | Remote jobs collected directly from employers' career sites, US and Canada | Paid, 7-day free trial (500 jobs, 50 requests per week); secret name `JOBSAPI_KEY` |
 | ProPublica Nonprofit Explorer | IRS 501(c)(3) records for the employer check | None |
 | NYC Jobs (NYC Open Data) | City agency jobs; off by default because they are rarely fully remote | None |
 
@@ -40,7 +41,7 @@ on it for PSLF.
 4. **Add secrets** in the repo under Settings → Secrets and variables → Actions:
    `USAJOBS_API_KEY`, `USAJOBS_EMAIL`, `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`,
    `SMTP_USER` (your Gmail address), `SMTP_PASSWORD` (the app password),
-   `EMAIL_TO` (where the digest goes), and optionally `NYC_APP_TOKEN`.
+   `EMAIL_TO` (where the digest goes), and optionally `JOBSAPI_KEY` and `NYC_APP_TOKEN`.
    Any source without keys is skipped, so you can start with NYC Jobs alone.
 5. **Turn on the landing page:** Settings → Pages → Deploy from a branch → `main`, folder `/docs`.
    On a free account the repo must be public for Pages to work. The page shows only job
