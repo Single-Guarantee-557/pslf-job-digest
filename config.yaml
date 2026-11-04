@@ -23,10 +23,10 @@ employer_overrides:
 # The title or description must contain at least one. Matching uses word
 # beginnings, so "analyst" also finds "analysts", but "nurse" does not find
 # "nursing" (listed separately). Jobs with more matches are listed first.
-keywords: [health, clinical, population, analyst, nurse, nursing, equity, perioperative, data]
+keywords: [health data, clinical data, population, analyst, nurse, nursing, equity, perioperative]
 
 # Optional: drop jobs whose title or employer contains any of these.
-exclude_title_words: [chief, director, senior]
+exclude_title_words: [chief, director, senior, architect]
 exclude_employers: []
 
 # ---- Sources ---------------------------------------------------------------
