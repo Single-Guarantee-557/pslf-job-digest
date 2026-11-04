@@ -83,22 +83,6 @@
   {
    "category": "nonprofit",
    "closes": "",
-   "employer": "Comprehensive Resources Inc.",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5952031040",
-   "location": "US",
-   "note": "IRS 501(c)(3): Comprehensive Housing Resources Inc (EIN 300622312)",
-   "posted": "2026-11-03",
-   "salary": "$242,154 (est.)",
-   "source": "Adzuna",
-   "title": "Forward Deployed Architect",
-   "url": "https://www.adzuna.com/land/ad/5952031040?se=YDYDf7zX8RGvZ7bY2rGjuQ&utm_medium=api&utm_source=ff485928&v=C292F256D17A4E399A71764B54F01B9AC55AA941"
-  },
-  {
-   "category": "nonprofit",
-   "closes": "",
    "employer": "Resource Logistics",
    "hits": [
     "data"
@@ -682,23 +666,6 @@
    "apply": "",
    "category": "nonprofit",
    "closes": "",
-   "employer": "Pacer Group",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5952092287",
-   "location": "Somerset, Somerset County",
-   "note": "IRS 501(c)(3): Pace Group Inc (EIN 562016907)",
-   "posted": "2026-11-03",
-   "salary": "$88,182 (est.)",
-   "source": "Adzuna",
-   "title": "ServiceNow Integration & Data Architect",
-   "url": "https://www.adzuna.com/land/ad/5952092287?se=MK-nYMDX8RGtDZBIyhV77A&utm_medium=api&utm_source=ff485928&v=1F223D5941093609EB00FC0FC9D509C22A5F1181"
-  },
-  {
-   "apply": "",
-   "category": "nonprofit",
-   "closes": "",
    "employer": "Leidos",
    "hits": [
     "analyst",
@@ -747,24 +714,6 @@
    "source": "Adzuna",
    "title": "Remote Python/TypeScript Developer",
    "url": "https://www.adzuna.com/land/ad/5952090864?se=ImAWY8DX8RGJF4UBchTzUg&utm_medium=api&utm_source=ff485928&v=CDFDA5F127C649BE81E8D1E63B2A54B0342B60C0"
-  },
-  {
-   "apply": "",
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "Charter Global, Inc.",
-   "hits": [
-    "health",
-    "data"
-   ],
-   "id": "adzuna:5952090833",
-   "location": "US",
-   "note": "IRS 501(c)(3): Global Learning Charter Public School Foundation Inc (EIN 843527681)",
-   "posted": "2026-11-03",
-   "salary": "$149,744 (est.)",
-   "source": "Adzuna",
-   "title": "Data Architect - (Healthcare)",
-   "url": "https://www.adzuna.com/land/ad/5952090833?se=2JRIZMDX8RGGzLXONapFkw&utm_medium=api&utm_source=ff485928&v=11A436A5F5A8BF93E10F06E1FB82D85126A55BC7"
   },
   {
    "apply": "",
@@ -1191,23 +1140,6 @@
    "closes": "",
    "employer": "Jean Martin, Inc",
    "hits": [
-    "data"
-   ],
-   "id": "adzuna:5953208236",
-   "location": "US",
-   "note": "IRS 501(c)(3): Blessed Jean-martin Moye Catholic School Castroville Tx Inc (EIN 334171769)",
-   "posted": "2026-11-04",
-   "salary": "$139,532 (est.)",
-   "source": "Adzuna",
-   "title": "Databricks Resident Solution Architect",
-   "url": "https://www.adzuna.com/details/5953208236?utm_medium=api&utm_source=ff485928"
-  },
-  {
-   "apply": "",
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "Jean Martin, Inc",
-   "hits": [
     "analyst",
     "data"
    ],
@@ -1237,23 +1169,6 @@
    "source": "Adzuna",
    "title": "Project Manager II - Regulatory Submissions (Remote - US)",
    "url": "https://www.adzuna.com/land/ad/5953198905?se=ugm7kXjY8RG2ba2xaTjwAg&utm_medium=api&utm_source=ff485928&v=9801C8169C15E3C6121E48EB4F97D87A65280D96"
-  },
-  {
-   "apply": "",
-   "category": "nonprofit",
-   "closes": "",
-   "employer": "Sentara Health",
-   "hits": [
-    "data"
-   ],
-   "id": "adzuna:5953189938",
-   "location": "Norfolk, Norfolk City",
-   "note": "IRS 501(c)(3): Sentara Health (EIN 521271901)",
-   "posted": "2026-11-04",
-   "salary": "$113,505 (est.)",
-   "source": "Adzuna",
-   "title": "ServiceNow Principal Domain Architect - Remote",
-   "url": "https://www.adzuna.com/land/ad/5953189938?se=FEaVlHjY8RGYN4NNDIpwcw&utm_medium=api&utm_source=ff485928&v=F22645441266213CCC8222D3FE43AB8E2C781E74"
   },
   {
    "apply": "",
@@ -1489,6 +1404,23 @@
    "source": "The Jobs API",
    "title": "PC Associate Float Pool/Scheduler",
    "url": "https://careers-piedmont.icims.com/jobs/27759/pc-associate-float-pool-scheduler/job"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allianz",
+   "hits": [
+    "analyst"
+   ],
+   "id": "adzuna:5953316584",
+   "location": "Schiller Park, Cook County",
+   "note": "IRS 501(c)(3): Onyx Allianz (EIN 932162582)",
+   "posted": "2026-11-04",
+   "salary": "$121,506 (est.)",
+   "source": "Adzuna",
+   "title": "Complex Claims Analyst - Financial Lines - EPL",
+   "url": "https://www.adzuna.com/land/ad/5953316584?se=GM7tiHzY8RGYkYko2GiSyg&utm_medium=api&utm_source=ff485928&v=AE60181F47DD4152E2E83CF92A085D4900B5C99D"
   }
  ]
 }
