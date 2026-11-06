@@ -163,6 +163,10 @@
   "nonprofit",
   "IRS 501(c)(3): Yakima Bullpen (EIN 824022551)"
  ],
+ "cai": [
+  "nonprofit",
+  "IRS 501(c)(3): Caif (EIN 364076167)"
+ ],
  "carta healthcare": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -322,6 +326,10 @@
  "global information technology": [
   "nonprofit",
   "IRS 501(c)(3): Brea Olinda High School Global Information Technology Academy (EIN 208935162)"
+ ],
+ "govcio": [
+  "nonprofit",
+  "IRS 501(c)(3): Govi (EIN 471720098)"
  ],
  "graymont ltd": [
   "unknown",
@@ -836,6 +844,10 @@
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "thronus group": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "titan machinery": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],

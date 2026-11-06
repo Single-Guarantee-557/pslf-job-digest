@@ -1493,5 +1493,58 @@
    "title": "Clinical Business Analyst (for SDTM Automation)",
    "url": "https://www.adzuna.com/details/5954518958?utm_medium=api&utm_source=ff485928"
   }
+ ],
+ "2026-11-06": [
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "GovCIO",
+   "hits": [
+    "analyst"
+   ],
+   "id": "adzuna:5955790531",
+   "location": "Concord, Merrimack County",
+   "note": "IRS 501(c)(3): Govi (EIN 471720098)",
+   "posted": "2026-11-06",
+   "salary": "$144,992 (est.)",
+   "source": "Adzuna",
+   "title": "Financial Analyst (Remote)",
+   "url": "https://www.adzuna.com/land/ad/5955790531?se=gsxB3gna8RGJ_5m-0JeM1g&utm_medium=api&utm_source=ff485928&v=5F2413D0A072AC86BC4B15A4E9079F8CC70AE5C1"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "CVS Health",
+   "hits": [
+    "nurse"
+   ],
+   "id": "adzuna:5955789448",
+   "location": "US",
+   "note": "IRS 501(c)(3): Cvs Health Employee Relief Fund (EIN 274380115)",
+   "posted": "2026-11-06",
+   "salary": "$34,549 (est.)",
+   "source": "Adzuna",
+   "title": "Utilization Management Nurse Consultant",
+   "url": "https://www.adzuna.com/land/ad/5955789448?se=gsxB3gna8RGJ_5m-0JeM1g&utm_medium=api&utm_source=ff485928&v=FF6BB3B67A3EB6F7F62CA5CCDBC1134E7C3F06F2"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "CAI",
+   "hits": [
+    "analyst"
+   ],
+   "id": "adzuna:5955788900",
+   "location": "Concord, Merrimack County",
+   "note": "IRS 501(c)(3): Caif (EIN 364076167)",
+   "posted": "2026-11-06",
+   "salary": "$113,373 (est.)",
+   "source": "Adzuna",
+   "title": "Network Support Analyst",
+   "url": "https://www.adzuna.com/land/ad/5955788900?se=6kZi4Ana8RGJ_5m-0JeM1g&utm_medium=api&utm_source=ff485928&v=C73A037EFD7FA4F8EB93B3C047C1276915A366BE"
+  }
  ]
 }
