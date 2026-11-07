@@ -51,6 +51,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "amerit consulting": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "apn consulting": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -395,6 +399,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "hyland": [
+  "nonprofit",
+  "IRS 501(c)(3): Hyland Hills Foundation (EIN 841216494)"
+ ],
  "idexcel": [
   "check",
   "Closest 501(c)(3) match: Ideel Junkee Foundation (EIN 833944008); verify"
@@ -675,6 +683,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "rula health": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "sanford health plan": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -906,6 +918,10 @@
  "washington university in st louis": [
   "nonprofit",
   "IRS 501(c)(3): Assoc Of Chinese Professors At Washington University In St Louis (EIN 920797117)"
+ ],
+ "werner": [
+  "nonprofit",
+  "IRS 501(c)(3): Cl Werner Foundation (EIN 263839487)"
  ],
  "western governors university": [
   "nonprofit",
