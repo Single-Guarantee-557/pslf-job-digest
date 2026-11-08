@@ -151,6 +151,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "brightplan": [
+  "check",
+  "Closest 501(c)(3) match: Brightland Homes Inc (EIN 821196882); verify"
+ ],
  "brooksource": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -166,6 +170,10 @@
  "bullpen": [
   "nonprofit",
   "IRS 501(c)(3): Yakima Bullpen (EIN 824022551)"
+ ],
+ "c signs": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "cai": [
   "nonprofit",
@@ -202,6 +210,10 @@
  "cobalt": [
   "nonprofit",
   "IRS 501(c)(3): Cobalt Foundation (EIN 846050191)"
+ ],
+ "comfort systems": [
+  "nonprofit",
+  "IRS 501(c)(3): Comfort Systems Usa Foundation (EIN 415360561)"
  ],
  "commonspirit health": [
   "nonprofit",
@@ -687,6 +699,18 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "s2tech": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "saic": [
+  "nonprofit",
+  "IRS 501(c)(3): Saic Charitable Foundation (EIN 851763905)"
+ ],
+ "salute": [
+  "nonprofit",
+  "IRS 501(c)(3): Salute Inc (EIN 61718308)"
+ ],
  "sanford health plan": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -726,6 +750,10 @@
  "siri infosolutions": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "skylight": [
+  "nonprofit",
+  "IRS 501(c)(3): Skylight (EIN 872385141)"
  ],
  "smart it frame": [
   "unknown",
