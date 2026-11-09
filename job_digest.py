@@ -289,7 +289,8 @@ def fetch_thejobsapi(cfg):
         return []
     headers = {"Authorization": f"Bearer {key}"}
     max_jobs = cfg.get("thejobsapi_max_jobs", 70)
-    query = " OR ".join(f"{k}*" for k in cfg["keywords"])  # any keyword, prefix match
+    # any keyword; single words are prefix-matched, multi-word keywords are searched as exact phrases
+    query = " OR ".join(f'"{k}"' if " " in k.strip() else f"{k.strip()}*" for k in cfg["keywords"])
     base = {"q": query, "remote": "true", "window": cfg.get("thejobsapi_window", "24h"),
             "description": "text", "country": "US"}
     jobs, dropped, cursor, requests_made = [], 0, None, 0
