@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings · PSLF Job Digest</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--card:#f6f8fa;--line:#d1d9e0;--accent:#0b5cad;--ok:#1a7f37;--bad:#cf222e;--chip:#eaeef2}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;--card:#151b23;--line:#3d444d;--accent:#4493f8;--ok:#3fb950;--bad:#f85149;--chip:#262c36}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:auto;padding:24px 16px 120px}
+h1{font-size:1.6rem;margin:0 0 4px}h2{font-size:1.1rem;margin:0 0 2px}
+.muted{color:var(--muted);font-size:.9rem}
+.nav{display:flex;gap:18px;margin-bottom:14px;font-weight:600}
+.nav a{color:var(--muted);text-decoration:none;padding-bottom:2px}
+.nav a[aria-current="page"]{color:var(--fg);border-bottom:2px solid var(--accent)}.nav a:hover{color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.card > p.muted{margin:0 0 12px}
+input[type=text],input[type=password],input[type=number],input[type=url],select{font:inherit;font-size:.95rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px;max-width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;min-height:8px}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--chip);border-radius:999px;padding:3px 4px 3px 12px;font-size:.9rem}
+.chip button{border:0;background:transparent;padding:0 6px;font-size:1rem;line-height:1;color:var(--muted)}
+.chip button:hover{color:var(--bad)}
+.add{display:flex;gap:8px;flex-wrap:wrap}.add input{flex:1;min-width:180px}
+.rows{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.row{display:grid;grid-template-columns:2fr 1.2fr 1fr auto;gap:8px;align-items:center}
+.row.two{grid-template-columns:2fr 1fr auto}
+.row input,.row select{width:100%}
+.hint{font-size:.8rem;color:var(--bad);grid-column:1/-1;margin-top:-4px}
+.toggles{display:grid;gap:8px}
+.toggles label{display:flex;gap:10px;align-items:flex-start}
+.toggles input{margin-top:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.grid label{display:flex;flex-direction:column;gap:4px;font-size:.9rem}
+details summary{cursor:pointer;font-weight:600}
+.savebar{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 16px}
+.savebar .inner{max-width:860px;margin:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#status{font-size:.9rem;color:var(--muted);flex:1;min-width:200px}
+#status.ok{color:var(--ok)}#status.bad{color:var(--bad)}
+ol{padding-left:20px;margin:8px 0}ol li{margin:4px 0}
+code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:.85em}
+@media (max-width:620px){.row,.row.two{grid-template-columns:1fr 1fr}.row input[type=url]{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main>
+  <nav class="nav"><a href="./">Results</a><a href="settings.html" aria-current="page">Settings</a></nav>
+  <h1>Search settings</h1>
+  <p class="muted">Changes are saved to your repository and used by the next search, either tomorrow morning or right away with “Save and run now.”</p>
+
+  <section class="card" id="connect">
+    <h2>GitHub connection</h2>
+    <p class="muted" id="conn-state">Checking…</p>
+    <details id="token-help">
+      <summary>Connect or change token</summary>
+      <ol>
+        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → New fine-grained token</a>.</li>
+        <li>Name it “Job digest settings” and pick an expiration (up to a year).</li>
+        <li>Under <b>Repository access</b>, choose <b>Only select repositories</b> and pick <code id="repo-name">your job digest repository</code>.</li>
+        <li>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b> and <b>Actions</b> to <b>Read and write</b>.</li>
+        <li>Click <b>Generate token</b>, copy it, and paste it below.</li>
+      </ol>
+      <p class="muted">The token is stored only in this browser. It is never saved to your repository. Anyone using this browser could edit your settings, so use “Forget token” on shared computers.</p>
+      <div class="add">
+        <input type="password" id="token" placeholder="github_pat_…" autocomplete="off" aria-label="GitHub token">
+        <button type="button" id="save-token">Save token</button>
+        <button type="button" id="forget-token">Forget token</button>
+      </div>
+      <div class="add" style="margin-top:8px">
+        <input type="text" id="repo" placeholder="username/repository" aria-label="Repository">
+        <button type="button" id="save-repo">Use this repository</button>
+      </div>
+    </details>
+  </section>
+
+  <div id="editor" hidden>
+    <section class="card">
+      <h2>Keywords</h2>
+      <p class="muted">A job must contain at least one of these in its title or description. Matching uses word beginnings, so “analyst” also finds “analysts.” Jobs with more matches are listed first.</p>
+      <div class="chips" id="keywords"></div>
+      <div class="add"><input type="text" data-add="keywords" placeholder="Add a keyword and press Enter"><button type="button" data-addbtn="keywords">Add</button></div>
+    </section>
+
+    <section class="card">
+      <h2>Exclude</h2>
+      <p class="muted">Jobs whose title contains any of these words are dropped, along with jobs from any employer listed here.</p>
+      <h3 class="muted" style="margin:0 0 6px">Title words</h3>
+      <div class="chips" id="exclude_title_words"></div>
+      <div class="add"><input type="text" data-add="exclude_title_words" placeholder="For example: director"><button type="button" data-addbtn="exclude_title_words">Add</button></div>
+      <h3 class="muted" style="margin:14px 0 6px">Employers</h3>
+      <div class="chips" id="exclude_employers"></div>
+      <div class="add"><input type="text" data-add="exclude_employers" placeholder="Employer name"><button type="button" data-addbtn="exclude_employers">Add</button></div>
+    </section>
+
+    <section class="card">
+      <h2>Employers to watch</h2>
+      <p class="muted">Paste a careers or job link from ats.rippling.com, greenhouse.io, jobs.lever.co or jobs.ashbyhq.com. Their remote jobs that match your keywords join the digest. Choose Nonprofit or Government only once you’ve confirmed it; Auto-check looks the employer up in IRS records.</p>
+      <div class="rows" id="watch_boards"></div>
+      <button type="button" id="add-board">+ Add employer</button>
+    </section>
+
+    <section class="card">
+      <h2>Employer corrections</h2>
+      <p class="muted">Fix employers the automatic nonprofit check gets wrong, such as hospital systems that file under a different legal name. “Not eligible” removes their jobs.</p>
+      <div class="rows" id="employer_overrides"></div>
+      <button type="button" id="add-override">+ Add correction</button>
+    </section>
+
+    <section class="card">
+      <h2>Filters and sources</h2>
+      <div class="toggles">
+        <label><input type="checkbox" data-bool="include_worth_checking"><span><b>Show “worth checking” employers</b><br><span class="muted">Probably nonprofit or public, but the IRS name match isn’t certain.</span></span></label>
+        <label><input type="checkbox" data-src="usajobs"><span><b>USAJOBS</b> <span class="muted">· federal jobs; needs the USAJOBS key secrets</span></span></label>
+        <label><input type="checkbox" data-src="adzuna"><span><b>Adzuna</b> <span class="muted">· nationwide listings; needs the Adzuna key secrets</span></span></label>
+        <label><input type="checkbox" data-src="thejobsapi"><span><b>The Jobs API</b> <span class="muted">· employer career sites; needs JOBSAPI_KEY</span></span></label>
+        <label><input type="checkbox" data-src="watch_boards"><span><b>Employers to watch</b> <span class="muted">· the list above; no key needed</span></span></label>
+        <label><input type="checkbox" data-src="nyc"><span><b>NYC Jobs</b> <span class="muted">· city agencies; rarely fully remote</span></span></label>
+        <label><input type="checkbox" data-bool="send_empty_digest"><span><b>Email me even when nothing is new</b></span></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary>Advanced limits</summary>
+        <p class="muted">These keep each run within the free tiers of the job APIs.</p>
+        <div class="grid">
+          <label>Days back each run looks<input type="number" min="1" max="30" data-num="lookback_days"></label>
+          <label>Adzuna pages per run (50 jobs each)<input type="number" min="1" max="20" data-num="adzuna_pages"></label>
+          <label>The Jobs API: jobs per run<input type="number" min="1" max="1000" data-num="thejobsapi_max_jobs"></label>
+          <label>The Jobs API: requests per run<input type="number" min="1" max="50" data-num="thejobsapi_max_requests"></label>
+          <label>The Jobs API: time window
+            <select data-sel="thejobsapi_window"><option>1h</option><option>24h</option><option>7d</option><option>30d</option><option>6m</option></select></label>
+          <label>New IRS employer lookups per run<input type="number" min="10" max="500" data-num="max_employer_lookups"></label>
+          <label>Days of results kept on the page<input type="number" min="1" max="60" data-num="page_days"></label>
+        </div>
+      </details>
+    </section>
+  </div>
+</main>
+
+<div class="savebar"><div class="inner">
+  <span id="status">Loading settings…</span>
+  <button type="button" id="save">Save</button>
+  <button type="button" class="primary" id="save-run">Save and run now</button>
+</div></div>
+
+<script>
+(function () {
+  var API = "https://api.github.com";
+  var DEFAULTS = {
+    keywords: ["health", "clinical", "population", "analyst", "nurse", "nursing", "equity", "perioperative", "data"],
+    exclude_title_words: [], exclude_employers: [], watch_boards: [], employer_overrides: {},
+    include_worth_checking: false, max_employer_lookups: 150,
+    sources: { usajobs: true, adzuna: true, thejobsapi: true, watch_boards: true, nyc: false },
+    lookback_days: 3, adzuna_pages: 10, thejobsapi_max_jobs: 70, thejobsapi_max_requests: 5,
+    thejobsapi_window: "24h", page_days: 14, send_empty_digest: false
+  };
+  var BOARD_RE = /ats\.rippling\.com|greenhouse\.io|jobs\.lever\.co|jobs\.ashbyhq\.com/i;
+  var cfg = null, sha = null, branch = "main", dirty = false;
+
+  function $(s) { return document.querySelector(s); }
+  function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function store(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function token() { return read("pslf-gh-token"); }
+  function repo() {
+    var saved = read("pslf-gh-repo");
+    if (saved) return saved;
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    var seg = location.pathname.split("/").filter(Boolean)[0];
+    return m && seg ? m[1] + "/" + seg : "";
+  }
+  function setStatus(msg, kind) { var s = $("#status"); s.textContent = msg; s.className = kind || ""; }
+  function markDirty() { dirty = true; setStatus("Unsaved changes"); }
+  window.addEventListener("beforeunload", function (e) { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+  function b64decode(str) {
+    var bin = atob(str.replace(/\n/g, "")), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+  function b64encode(str) {
+    var bytes = new TextEncoder().encode(str), bin = "";
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function gh(path, opts) {
+    opts = opts || {};
+    var headers = { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
+    if (token()) headers["Authorization"] = "Bearer " + token();
+    if (opts.body) headers["Content-Type"] = "application/json";
+    return fetch(API + path, { method: opts.method || "GET", headers: headers, body: opts.body, cache: "no-store" });
+  }
+  function explain(res, action) {
+    if (res.status === 401) return action + " failed: GitHub didn’t accept the token. It may have expired; create a new one.";
+    if (res.status === 403) return action + " failed: the token lacks permission. It needs Contents and Actions set to Read and write.";
+    if (res.status === 404) return action + " failed: GitHub couldn’t find the repository or file. Check the repository name and that the token includes it.";
+    if (res.status === 409) return action + " failed: settings changed elsewhere. Reload the page and try again.";
+    if (res.status === 422) return action + " failed: GitHub rejected the request (" + res.status + ").";
+    return action + " failed (GitHub error " + res.status + ").";
+  }
+
+  // ---------- loading
+  function load() {
+    var r = repo();
+    $("#repo").value = r;
+    $("#repo-name").textContent = r || "your job digest repository";
+    if (!r) {
+      $("#conn-state").textContent = "Enter your repository name below (for example harnchiu/pslf-job-digest).";
+      $("#token-help").open = true; setStatus("Not connected", "bad"); return;
+    }
+    $("#conn-state").textContent = token()
+      ? "Connected to " + r + ". You can edit and save."
+      : "Viewing " + r + " read-only. Add a token to save changes.";
+    if (!token()) $("#token-help").open = true;
+    gh("/repos/" + r).then(function (res) {
+      if (res.ok) return res.json().then(function (j) { branch = j.default_branch || "main"; });
+    }).catch(function () {}).then(function () {
+      return gh("/repos/" + r + "/contents/config.json?ref=" + encodeURIComponent(branch));
+    }).then(function (res) {
+      if (res.ok) return res.json().then(function (j) { sha = j.sha; return JSON.parse(b64decode(j.content)); });
+      if (res.status !== 404) throw new Error(explain(res, "Loading settings"));
+      sha = null;   // first time: import the original config.yaml
+      return gh("/repos/" + r + "/contents/config.yaml?ref=" + encodeURIComponent(branch)).then(function (res2) {
+        if (!res2.ok) return {};
+        return res2.json().then(function (j) { return (window.jsyaml && jsyaml.load(b64decode(j.content))) || {}; });
+      });
+    }).then(function (loaded) {
+      cfg = Object.assign({}, DEFAULTS, loaded || {});
+      cfg.sources = Object.assign({}, DEFAULTS.sources, cfg.sources || {});
+      cfg.watch_boards = (cfg.watch_boards || []).map(function (b) { return typeof b === "string" ? { url: b } : b; });
+      cfg.employer_overrides = cfg.employer_overrides || {};
+      render(); $("#editor").hidden = false;
+      setStatus(sha ? "Settings loaded" : "Imported your original config.yaml. Save to switch to this page.", sha ? "" : "ok");
+      $("#save").disabled = $("#save-run").disabled = !token();
+    }).catch(function (e) { setStatus(e.message || "Couldn’t load settings. Check your connection.", "bad"); });
+  }
+
+  // ---------- rendering
+  function renderChips(key) {
+    var box = $("#" + key); box.textContent = "";
+    (cfg[key] || []).forEach(function (word, i) {
+      var chip = document.createElement("span"); chip.className = "chip"; chip.textContent = word;
+      var x = document.createElement("button"); x.type = "button"; x.textContent = "×";
+      x.setAttribute("aria-label", "Remove " + word);
+      x.onclick = function () { cfg[key].splice(i, 1); renderChips(key); markDirty(); };
+      chip.appendChild(x); box.appendChild(chip);
+    });
+    if (!(cfg[key] || []).length) { var none = document.createElement("span"); none.className = "muted"; none.textContent = "None"; box.appendChild(none); }
+  }
+  function select(options, value) {
+    var s = document.createElement("select");
+    options.forEach(function (o) { var opt = document.createElement("option"); opt.value = o[0]; opt.textContent = o[1]; s.appendChild(opt); });
+    s.value = value || options[0][0]; return s;
+  }
+  function input(type, value, placeholder, label) {
+    var i = document.createElement("input"); i.type = type; i.value = value || ""; i.placeholder = placeholder;
+    i.setAttribute("aria-label", label); return i;
+  }
+  function removeBtn(label, fn) { var b = document.createElement("button"); b.type = "button"; b.textContent = "Remove"; b.setAttribute("aria-label", label); b.onclick = fn; return b; }
+
+  function renderBoards() {
+    var box = $("#watch_boards"); box.textContent = "";
+    cfg.watch_boards.forEach(function (b, i) {
+      var row = document.createElement("div"); row.className = "row";
+      var url = input("url", b.url, "https://ats.rippling.com/employer/jobs", "Careers link");
+      var name = input("text", b.name, "Employer name", "Employer name");
+      var cat = select([["", "Auto-check"], ["nonprofit", "Nonprofit"], ["government", "Government"]], b.category);
+      var hint = document.createElement("div"); hint.className = "hint";
+      function check() { hint.textContent = b.url && !BOARD_RE.test(b.url) ? "This link isn’t from a supported careers site, so it will be skipped." : ""; }
+      url.oninput = function () { b.url = url.value.trim(); check(); markDirty(); };
+      name.oninput = function () { b.name = name.value; markDirty(); };
+      cat.onchange = function () { if (cat.value) b.category = cat.value; else delete b.category; markDirty(); };
+      row.append(url, name, cat, removeBtn("Remove employer", function () { cfg.watch_boards.splice(i, 1); renderBoards(); markDirty(); }), hint);
+      check(); box.appendChild(row);
+    });
+    if (!cfg.watch_boards.length) { var p = document.createElement("p"); p.className = "muted"; p.textContent = "No employers yet."; box.appendChild(p); }
+  }
+
+  var overrideList = [];
+  function renderOverrides() {
+    var box = $("#employer_overrides"); box.textContent = "";
+    overrideList.forEach(function (o, i) {
+      var row = document.createElement("div"); row.className = "row two";
+      var name = input("text", o.name, "Employer name as it appears in listings", "Employer name");
+      var cat = select([["nonprofit", "Nonprofit"], ["government", "Government"], ["unknown", "Not eligible"]], o.category);
+      name.oninput = function () { o.name = name.value; syncOverrides(); };
+      cat.onchange = function () { o.category = cat.value; syncOverrides(); };
+      row.append(name, cat, removeBtn("Remove correction", function () { overrideList.splice(i, 1); syncOverrides(); renderOverrides(); }));
+      box.appendChild(row);
+    });
+    if (!overrideList.length) { var p = document.createElement("p"); p.className = "muted"; p.textContent = "No corrections yet."; box.appendChild(p); }
+  }
+  function syncOverrides() {
+    cfg.employer_overrides = {};
+    overrideList.forEach(function (o) { if (o.name && o.name.trim()) cfg.employer_overrides[o.name.trim()] = o.category || "nonprofit"; });
+    markDirty();
+  }
+
+  function render() {
+    ["keywords", "exclude_title_words", "exclude_employers"].forEach(renderChips);
+    renderBoards();
+    overrideList = Object.keys(cfg.employer_overrides).map(function (k) { return { name: k, category: cfg.employer_overrides[k] }; });
+    renderOverrides();
+    $$("[data-bool]").forEach(function (c) { c.checked = !!cfg[c.dataset.bool]; });
+    $$("[data-src]").forEach(function (c) { c.checked = cfg.sources[c.dataset.src] !== false; });
+    $$("[data-num]").forEach(function (n) { n.value = cfg[n.dataset.num]; });
+    $$("[data-sel]").forEach(function (s) { s.value = cfg[s.dataset.sel]; });
+  }
+
+  // ---------- editing
+  function addWord(key) {
+    var box = $('[data-add="' + key + '"]'), words = box.value.split(",").map(function (w) { return w.trim(); }).filter(Boolean);
+    words.forEach(function (w) {
+      if (!cfg[key].some(function (x) { return String(x).toLowerCase() === w.toLowerCase(); })) cfg[key].push(w);
+    });
+    box.value = ""; renderChips(key); if (words.length) markDirty();
+  }
+  $$("[data-add]").forEach(function (box) {
+    box.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); addWord(box.dataset.add); } });
+  });
+  $$("[data-addbtn]").forEach(function (b) { b.onclick = function () { addWord(b.dataset.addbtn); }; });
+  $("#add-board").onclick = function () { cfg.watch_boards.push({ url: "" }); renderBoards(); markDirty(); };
+  $("#add-override").onclick = function () { overrideList.push({ name: "", category: "nonprofit" }); renderOverrides(); };
+  $$("[data-bool]").forEach(function (c) { c.onchange = function () { cfg[c.dataset.bool] = c.checked; markDirty(); }; });
+  $$("[data-src]").forEach(function (c) { c.onchange = function () { cfg.sources[c.dataset.src] = c.checked; markDirty(); }; });
+  $$("[data-num]").forEach(function (n) { n.oninput = function () { var v = parseInt(n.value, 10); if (!isNaN(v)) { cfg[n.dataset.num] = v; markDirty(); } }; });
+  $$("[data-sel]").forEach(function (s) { s.onchange = function () { cfg[s.dataset.sel] = s.value; markDirty(); }; });
+
+  // ---------- saving
+  function cleaned() {
+    var out = JSON.parse(JSON.stringify(cfg));
+    out.watch_boards = out.watch_boards.filter(function (b) { return b.url && b.url.trim(); }).map(function (b) {
+      var o = { url: b.url.trim() };
+      if (b.name && b.name.trim()) o.name = b.name.trim();
+      if (b.category) o.category = b.category;
+      return o;
+    });
+    return out;
+  }
+  function save() {
+    if (!token()) { setStatus("Add a token first (see GitHub connection).", "bad"); return Promise.reject(); }
+    if (!cfg.keywords.length) { setStatus("Add at least one keyword before saving.", "bad"); return Promise.reject(); }
+    setStatus("Saving…");
+    var body = { message: "Update search settings from the web page", content: b64encode(JSON.stringify(cleaned(), null, 2) + "\n"), branch: branch };
+    if (sha) body.sha = sha;
+    return gh("/repos/" + repo() + "/contents/config.json", { method: "PUT", body: JSON.stringify(body) }).then(function (res) {
+      if (!res.ok) { setStatus(explain(res, "Saving"), "bad"); throw new Error("save"); }
+      return res.json().then(function (j) { sha = j.content.sha; dirty = false; setStatus("Saved. The next search will use these settings.", "ok"); });
+    });
+  }
+  function run() {
+    setStatus("Starting a search…");
+    return gh("/repos/" + repo() + "/actions/workflows/daily-digest.yml/dispatches",
+      { method: "POST", body: JSON.stringify({ ref: branch }) }).then(function (res) {
+      if (res.status === 204) setStatus("Saved, and a search is running. Results usually appear on the Results page in 5 to 10 minutes.", "ok");
+      else setStatus("Saved, but the search didn’t start. " + explain(res, "Starting the search"), "bad");
+    });
+  }
+  $("#save").onclick = function () { save().catch(function () {}); };
+  $("#save-run").onclick = function () { save().then(run).catch(function () {}); };
+
+  // ---------- connection
+  $("#save-token").onclick = function () {
+    var t = $("#token").value.trim(); if (!t) return;
+    store("pslf-gh-token", t); $("#token").value = ""; dirty = false; load();
+  };
+  $("#forget-token").onclick = function () { store("pslf-gh-token", null); load(); };
+  $("#save-repo").onclick = function () {
+    var v = $("#repo").value.trim().replace(/^https?:\/\/github\.com\//, "").replace(/\/$/, "");
+    if (!/^[^/\s]+\/[^/\s]+$/.test(v)) { setStatus("Use the form username/repository.", "bad"); return; }
+    store("pslf-gh-repo", v); dirty = false; load();
+  };
+
+  load();
+})();
+</script>
+</body>
+</html>
