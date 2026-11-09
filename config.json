@@ -2,12 +2,11 @@
   "keywords": [
     "health data",
     "clinical data",
-    "population",
-    "analyst",
     "nurse",
     "nursing",
     "equity",
-    "perioperative"
+    "perioperative",
+    "population health"
   ],
   "exclude_title_words": [
     "chief",
