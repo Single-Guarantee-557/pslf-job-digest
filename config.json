@@ -1,0 +1,42 @@
+{
+  "keywords": [
+    "health data",
+    "clinical data",
+    "population",
+    "analyst",
+    "nurse",
+    "nursing",
+    "equity",
+    "perioperative"
+  ],
+  "exclude_title_words": [
+    "chief",
+    "director",
+    "senior",
+    "architect"
+  ],
+  "exclude_employers": [],
+  "watch_boards": [],
+  "employer_overrides": {
+    "NYC Health + Hospitals": "government",
+    "Mount Sinai": "nonprofit",
+    "NYU Langone Health": "nonprofit",
+    "NewYork-Presbyterian": "nonprofit"
+  },
+  "include_worth_checking": false,
+  "max_employer_lookups": 60,
+  "sources": {
+    "usajobs": true,
+    "adzuna": true,
+    "thejobsapi": true,
+    "watch_boards": true,
+    "nyc": true
+  },
+  "lookback_days": 3,
+  "adzuna_pages": 10,
+  "thejobsapi_max_jobs": 70,
+  "thejobsapi_max_requests": 5,
+  "thejobsapi_window": "24h",
+  "page_days": 14,
+  "send_empty_digest": false
+}
