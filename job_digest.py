@@ -105,6 +105,30 @@ def money(lo, hi, suffix=""):
     return (f"{fmt(lo)} – {fmt(hi)}" if lo and hi and lo != hi else fmt(lo or hi)) + suffix
 
 
+DEFAULTS = {
+    "keywords": ["health", "clinical", "population", "analyst", "nurse", "nursing", "equity", "perioperative", "data"],
+    "exclude_title_words": [], "exclude_employers": [], "watch_boards": [], "employer_overrides": {},
+    "include_worth_checking": False, "max_employer_lookups": 150,
+    "sources": {"usajobs": True, "adzuna": True, "thejobsapi": True, "watch_boards": True, "nyc": False},
+    "lookback_days": 3, "adzuna_pages": 10, "thejobsapi_max_jobs": 70, "thejobsapi_max_requests": 5,
+    "thejobsapi_window": "24h", "page_days": 14, "send_empty_digest": False,
+}
+
+
+def load_config(path=None):
+    """config.json is written by the Settings page; config.yaml is the original hand-edited file."""
+    if path is None:
+        path = ROOT / "config.json" if (ROOT / "config.json").exists() else ROOT / "config.yaml"
+    path = Path(path)
+    text = path.read_text()
+    loaded = json.loads(text) if path.suffix == ".json" else yaml.safe_load(text)
+    cfg = {**DEFAULTS, **(loaded or {})}
+    cfg["sources"] = {**DEFAULTS["sources"], **(cfg.get("sources") or {})}
+    cfg["keywords"] = [k for k in cfg["keywords"] if str(k).strip()] or DEFAULTS["keywords"]
+    log(f"Settings loaded from {path.name}")
+    return cfg
+
+
 # ---------------------------------------------------------------- filters
 REMOTE_YES = [r"\bremote\b", r"work from home", r"\bwfh\b", r"telework from anywhere",
               r"telecommut", r"anywhere in the u\.?s"]
@@ -112,9 +136,16 @@ REMOTE_NO_ANYWHERE = [r"\bhybrid\b", r"not (a )?remote", r"remote not available"
 REMOTE_NO_HEADLINE = [r"on-?site", r"in[- ]office", r"in[- ]person"]  # checked in title/location only
 
 
+# "Remote / San Diego, CA / Hybrid" or "Remote or Hybrid": remote offered as one of the options
+REMOTE_OPTION = r"\bremote\b\s*(/|\||,|\bor\b)|(/|\||,|\bor\b)\s*\bremote\b"
+
+
 def is_remote(headline, description=""):
-    """headline = title + location. Needs a remote signal and no hybrid/on-site wording."""
+    """headline = title + location. Needs a remote signal and no hybrid/on-site wording,
+    unless the title/location lists fully remote as one of the options."""
     head, body = (headline or "").lower(), (description or "").lower()
+    if re.search(REMOTE_OPTION, head) and not re.search(r"not (a )?remote", head + " " + body):
+        return True
     if any(re.search(p, head + " " + body) for p in REMOTE_NO_ANYWHERE):
         return False
     if any(re.search(p, head) for p in REMOTE_NO_HEADLINE):
@@ -309,6 +340,96 @@ def fetch_thejobsapi(cfg):
     return jobs
 
 
+BOARD_PATTERNS = [
+    ("rippling", r"ats\.rippling\.com/(?:[a-z]{2}-[A-Z]{2}/)?([^/?#]+)"),
+    ("greenhouse", r"greenhouse\.io/(?:embed/job_board\?for=)?([^/?#&]+)"),
+    ("lever", r"jobs\.lever\.co/([^/?#]+)"),
+    ("ashby", r"jobs\.ashbyhq\.com/([^/?#]+)"),
+]
+
+
+def parse_board(entry):
+    """A watch_boards entry (a link, or a dict with url/name/category) -> (system, slug, name, category)."""
+    if isinstance(entry, str):
+        entry = {"url": entry}
+    url = (entry.get("url") or "").strip()
+    for system, pattern in BOARD_PATTERNS:
+        m = re.search(pattern, url)
+        if m:
+            slug = m.group(1)
+            name = entry.get("name") or slug.replace("-", " ").replace("_", " ").title()
+            category = entry.get("category") if entry.get("category") in ("government", "nonprofit") else ""
+            return system, slug, name, category
+    return None
+
+
+def board_jobs(system, slug):
+    """Returns (id, title, url, location, remote, posted, text) tuples for one employer's board."""
+    out = []
+    if system == "rippling":
+        r = requests.get(f"https://api.rippling.com/platform/api/ats/v2/board/{slug}/jobs",
+                         params={"groupJobsByLocation": "true", "page": 0, "pageSize": 1000}, timeout=30)
+        r.raise_for_status()
+        for it in r.json().get("items", []):
+            locs = it.get("locations") or []
+            remote = any(l.get("workplaceType") == "REMOTE" for l in locs)
+            def place(l):
+                wt = (l.get("workplaceType") or "").replace("_", "-").lower()
+                return l["name"] if not wt or wt in l["name"].lower() else f"{l['name']} ({wt})"
+            where = "; ".join(place(l) for l in locs[:3] if l.get("name"))
+            out.append((it.get("id"), (it.get("name") or "").strip(), it.get("url"), where, remote, "", ""))
+    elif system == "greenhouse":
+        r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs", timeout=30)
+        r.raise_for_status()
+        for it in r.json().get("jobs", []):
+            where = (it.get("location") or {}).get("name") or ""
+            out.append((it.get("id"), it.get("title"), it.get("absolute_url"), where,
+                        is_remote(f"{it.get('title')} {where}"), (it.get("first_published") or it.get("updated_at") or "")[:10], ""))
+    elif system == "lever":
+        r = requests.get(f"https://api.lever.co/v0/postings/{slug}", params={"mode": "json"}, timeout=30)
+        r.raise_for_status()
+        for it in r.json():
+            where = (it.get("categories") or {}).get("location") or ""
+            wt = (it.get("workplaceType") or "").lower()
+            remote = wt == "remote" or (wt in ("", "unspecified") and is_remote(f"{it.get('text')} {where}"))
+            posted = dt.datetime.fromtimestamp(it["createdAt"] / 1000).date().isoformat() if it.get("createdAt") else ""
+            out.append((it.get("id"), it.get("text"), it.get("hostedUrl"), where, remote, posted, it.get("descriptionPlain") or ""))
+    elif system == "ashby":
+        r = requests.get(f"https://api.ashbyhq.com/posting-api/job-board/{slug}", timeout=30)
+        r.raise_for_status()
+        for it in r.json().get("jobs", []):
+            wt = (it.get("workplaceType") or "").lower()
+            remote = wt == "remote" or (not wt and it.get("isRemote") is True)
+            out.append((it.get("id"), it.get("title"), it.get("jobUrl"), it.get("location") or "", remote,
+                        (it.get("publishedAt") or "")[:10], it.get("descriptionPlain") or ""))
+    return out
+
+
+def fetch_boards(cfg):
+    jobs = []
+    for entry in cfg.get("watch_boards") or []:
+        parsed = parse_board(entry)
+        if not parsed:
+            log(f"Watched boards: couldn't read {entry!r}; use an ats.rippling.com, greenhouse.io, "
+                "jobs.lever.co or jobs.ashbyhq.com link")
+            continue
+        system, slug, name, category = parsed
+        try:
+            rows = board_jobs(system, slug)
+        except (requests.RequestException, ValueError, KeyError, TypeError) as e:
+            log(f"Watched boards: {name} ({system}) failed: {e}")
+            continue
+        remote_rows = [row for row in rows if row[4]]
+        for jid, title, url, where, _, posted, text in remote_rows:
+            jobs.append(make_job(
+                id=f"{system}:{slug}:{jid}", source=f"{name} careers", title=title, employer=name,
+                location=where if "remote" in where.lower() else (f"Remote ({where})" if where else "Remote"), url=url, posted=posted, text=text,
+                category=category, note="Set in your watch list" if category else ""))
+        log(f"Watched boards: {name}: {len(remote_rows)} remote of {len(rows)} open postings")
+        time.sleep(1)
+    return jobs
+
+
 # ---------------------------------------------------------------- PSLF check
 def name_score(employer, org_name):
     a, b = norm(employer), norm(org_name)
@@ -389,6 +510,8 @@ button:hover{border-color:var(--accent)}button.primary{color:var(--ok);border-co
 .tab span{font-weight:400;margin-left:4px}
 .tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 [hidden]{display:none!important}
+.nav{display:flex;gap:18px;margin-bottom:14px;font-weight:600}.nav a{color:var(--muted);text-decoration:none;padding-bottom:2px}
+.nav a[aria-current="page"]{color:var(--fg);border-bottom:2px solid var(--accent)}.nav a:hover{color:var(--accent)}
 """
 
 PAGE_JS = r"""
@@ -565,7 +688,8 @@ def render(jobs_by_day, cfg, page=False):
             out.append("<p>No new remote government or nonprofit jobs matched today.</p>")
         doc = f"<h2 style='margin-top:0'>{title} · {TODAY:%b %d}</h2>" + "".join(out) + footer
         return f"<div style='font-family:Arial,sans-serif;max-width:720px'>{doc}</div>"
-    header = (f"<h1>{title}</h1><p class='muted'>Remote only · government and nonprofit · Updated "
+    header = ("<nav class='nav'><a href='./' aria-current='page'>Results</a><a href='settings.html'>Settings</a></nav>"
+              f"<h1>{title}</h1><p class='muted'>Remote only · government and nonprofit · Updated "
               f"{TODAY:%A, %B %d, %Y} · last {cfg.get('page_days', 14)} days</p>"
               "<div class='tabs' role='tablist'>"
               "<button type='button' class='tab' role='tab' data-view='review'>To review<span id='count-review'></span></button>"
@@ -620,11 +744,11 @@ def demo_jobs():
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--config", default=str(ROOT / "config.yaml"))
+    ap.add_argument("--config", default=None, help="defaults to config.json (saved by the Settings page), else config.yaml")
     ap.add_argument("--no-email", action="store_true")
     ap.add_argument("--demo", action="store_true", help="render sample jobs without calling any API")
     args = ap.parse_args()
-    cfg = yaml.safe_load(Path(args.config).read_text())
+    cfg = load_config(args.config)
 
     if args.demo:
         jobs = demo_jobs()
@@ -638,7 +762,8 @@ def main():
     found = ((fetch_usajobs(cfg) if src.get("usajobs", True) else []) +
              (fetch_nyc(cfg) if src.get("nyc", False) else []) +
              (fetch_adzuna(cfg) if src.get("adzuna", True) else []) +
-             (fetch_thejobsapi(cfg) if src.get("thejobsapi", True) else []))
+             (fetch_thejobsapi(cfg) if src.get("thejobsapi", True) else []) +
+             (fetch_boards(cfg) if src.get("watch_boards", True) else []))
     # Filter 1 (remote) happened inside each fetcher.
     seen = load_json(SEEN_FILE, {})
     unique, skipped = {}, 0
