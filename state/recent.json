@@ -3165,5 +3165,453 @@
    "title": "Accreditation Review Specialist - Procedural",
    "url": "https://ibyrjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/ACCJobs/job/98"
   }
+ ],
+ "2026-11-11": [
+  {
+   "apply": "",
+   "category": "government",
+   "closes": "08-JAN-202",
+   "employer": "Dept Of Health/Mental Hygiene",
+   "hits": [
+    "equity",
+    "population health"
+   ],
+   "id": "nyc:796646",
+   "location": "125 Worth Street, Nyc",
+   "note": "NYC agency \u00b7 Job ID 796646",
+   "posted": "2026-11-09",
+   "salary": "$83,000 \u2013 $95,450",
+   "source": "NYC Jobs",
+   "title": "Agency Attorney, Bureau of Environmental Surveillance and Policy",
+   "url": "https://cityjobs.nyc.gov/jobs?keyword=796646"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Rippling",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12618017",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Ripplin Inc (EIN 813491098)",
+   "posted": "2026-11-10",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Product Specialist, Time & Attendance / Scheduling",
+   "url": "https://ats.rippling.com/rippling/jobs/d28d3df1-e7c5-46dc-8edd-9da677ab0f26"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "2026-11-30",
+   "employer": "Hilton",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12617268",
+   "location": "Remote (Dallas, TX)",
+   "note": "IRS 501(c)(3): Hilton Haus (EIN 873847586)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Analyst Hotel Level Marketing, Agency Solutions",
+   "url": "https://efet.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/230754"
+  },
+  {
+   "apply": "https://origence.clearcompany.com/careers/jobs/b708475b-7165-1fda-0ea2-a2dcc68b1736/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Origence",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12616645",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Origenome Inc (EIN 881981322)",
+   "posted": "2026-11-06",
+   "salary": "$25 \u2013 $32 /hr",
+   "source": "The Jobs API",
+   "title": "Credit Analyst II (Indirect Lending/Auto)",
+   "url": "https://origence.clearcompany.com/careers/jobs/b708475b-7165-1fda-0ea2-a2dcc68b1736"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "DAT",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12616195",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Dat (EIN 920641482)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Enterprise Account Manager",
+   "url": "https://careers.dat.com/jobs/6250764004?gh_jid=6250764004"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "GLORY",
+   "hits": [
+    "nurse"
+   ],
+   "id": "thejobsapi:12615709",
+   "location": "Remote (Chicago, IL, Chicago, IL)",
+   "note": "IRS 501(c)(3): Glory (EIN 824901148)",
+   "posted": "2026-11-11",
+   "salary": "$20 \u2013 $27 /hr",
+   "source": "The Jobs API",
+   "title": "Field Service Technician - Denver, CO",
+   "url": "https://gloryglobal.pinpointhq.com/en/postings/2c7d6dd1-bedc-46ce-a172-3065d4f3afa9"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Delta Group",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12615529",
+   "location": "Remote (Los Angeles, CA)",
+   "note": "IRS 501(c)(3): Delta Charter Group (EIN 273126744)",
+   "posted": "2025-01-16",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "SIU Investigator - Los Angeles, CA",
+   "url": "https://deltagroup.bamboohr.com/careers/168"
+  },
+  {
+   "apply": "https://jobs.lever.co/destinationknot/00d0cc35-ea85-45e1-b12e-bdb143e1f1d0/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Destination Careers",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12615410",
+   "location": "Remote (Florida)",
+   "note": "IRS 501(c)(3): Destination Dakota Legal Careers Inc (EIN 992351011)",
+   "posted": "2026-11-11",
+   "salary": "$40,000 \u2013 $75,000",
+   "source": "The Jobs API",
+   "title": "Customer Service Hospitality \u2013 Reservations",
+   "url": "https://jobs.lever.co/destinationknot/00d0cc35-ea85-45e1-b12e-bdb143e1f1d0"
+  },
+  {
+   "apply": "https://jobs.lever.co/destinationknot/07c30e66-8ee2-43b1-b285-dc5a53512558/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Destination Careers",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12615409",
+   "location": "Remote (Savannah, GA)",
+   "note": "IRS 501(c)(3): Destination Dakota Legal Careers Inc (EIN 992351011)",
+   "posted": "2026-11-11",
+   "salary": "$40,000 \u2013 $70,000",
+   "source": "The Jobs API",
+   "title": "Customer Service \u2013 Booking Hotels | Work Online",
+   "url": "https://jobs.lever.co/destinationknot/07c30e66-8ee2-43b1-b285-dc5a53512558"
+  },
+  {
+   "apply": "https://jobs.lever.co/destinationknot/c03b63e5-1fed-4647-b2ff-f9287d9b577e/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Destination Careers",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12615408",
+   "location": "Remote (Lexington, KY)",
+   "note": "IRS 501(c)(3): Destination Dakota Legal Careers Inc (EIN 992351011)",
+   "posted": "2026-11-11",
+   "salary": "$40,000 \u2013 $70,000",
+   "source": "The Jobs API",
+   "title": "Customer Service \u2013 Booking Hotels | We Will Train You",
+   "url": "https://jobs.lever.co/destinationknot/c03b63e5-1fed-4647-b2ff-f9287d9b577e"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "HealthCare Support",
+   "hits": [
+    "nurse",
+    "hospital"
+   ],
+   "id": "thejobsapi:12615039",
+   "location": "Remote (Texas)",
+   "note": "IRS 501(c)(3): Village Healthcare Support Inc (EIN 332390242)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Patient/Member Services",
+   "url": "https://www.healthcaresupport.com/jobs/remote-tx/administrative-clerical-patient-member-services-hcs-533858"
+  },
+  {
+   "apply": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Financial-Analyst_J290065/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Highmark Health",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12615004",
+   "location": "Remote (Home, PA)",
+   "note": "IRS 501(c)(3): Highmark Health (EIN 453674900)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Financial Analyst",
+   "url": "https://careers.highmarkhealth.org/financial-analyst/job/J290065"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "American Diabetes Association",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12614228",
+   "location": "Remote (Arlington, VA)",
+   "note": "IRS 501(c)(3): American Diabetes Association (EIN 541734511)",
+   "posted": "2026-11-11",
+   "salary": "$63,000 \u2013 $73,000",
+   "source": "The Jobs API",
+   "title": "Manager, Strategic Sourcing",
+   "url": "https://secure7.saashr.com/ta/6148957.careers?ShowJob=654784034"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Highmark Inc",
+   "hits": [
+    "nurse",
+    "nursing",
+    "equity"
+   ],
+   "id": "thejobsapi:12613702",
+   "location": "Remote (Working at Home, PA)",
+   "note": "IRS 501(c)(3): Highmark Inc (EIN 582554484)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Care Manager RN - (Remote)",
+   "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Care-Manager-RN----Remote-_J290414"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "2026-11-14",
+   "employer": "Highmark Health",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12613698",
+   "location": "Remote (Working at Home, PA, Working at Home, MD)",
+   "note": "IRS 501(c)(3): Highmark Health (EIN 453674900)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Payroll Administration Specialist",
+   "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Payroll-Administration-Specialist_J291476"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/562dbe4d-da43-40cb-9a45-366fd4edcce1/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612914",
+   "location": "Remote (Nevada)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/562dbe4d-da43-40cb-9a45-366fd4edcce1"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/8dfad7e6-f6bd-4a82-a95f-75b4f0031903/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612913",
+   "location": "Remote (Charlotte, NC)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/8dfad7e6-f6bd-4a82-a95f-75b4f0031903"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/fe8a41c1-bc63-47eb-adff-1fc869b13701/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612912",
+   "location": "Remote (Nashville, TN)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/fe8a41c1-bc63-47eb-adff-1fc869b13701"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/2d678ef6-c861-466e-b25a-4f985687500e/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612911",
+   "location": "Remote (Indianapolis, IN)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/2d678ef6-c861-466e-b25a-4f985687500e"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/558bcf00-4eba-49e7-94a9-2bc4881a255e/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612910",
+   "location": "Remote (Ohio)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/558bcf00-4eba-49e7-94a9-2bc4881a255e"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/c5d15313-5ed5-404a-97e0-8881731823e8/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612909",
+   "location": "Remote (Washington)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/c5d15313-5ed5-404a-97e0-8881731823e8"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/541c6a9c-f0d4-421f-9158-6b42fb06e174/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612908",
+   "location": "Remote (Arizona)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/541c6a9c-f0d4-421f-9158-6b42fb06e174"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/ea257601-3a4c-45c1-9d72-b363e00752d0/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612907",
+   "location": "Remote (Colorado)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/ea257601-3a4c-45c1-9d72-b363e00752d0"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/a0e67032-17d3-45b4-b234-2a8ce430ce37/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612906",
+   "location": "Remote (Connecticut)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/a0e67032-17d3-45b4-b234-2a8ce430ce37"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/83e4efd2-fc58-48b2-8e61-9614235d9e26/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612905",
+   "location": "Remote (Delaware)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/83e4efd2-fc58-48b2-8e61-9614235d9e26"
+  },
+  {
+   "apply": "https://jobs.ashbyhq.com/allarahealth/2643ed26-4950-456f-a767-298ace1a0ec5/application",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Allara",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12612904",
+   "location": "Remote (District of Columbia)",
+   "note": "IRS 501(c)(3): Allatra Inc (EIN 815368510)",
+   "posted": "2026-11-11",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Telehealth Endocrinologist (1099)| Evenings, Fridays, and/or Weekends",
+   "url": "https://jobs.ashbyhq.com/allarahealth/2643ed26-4950-456f-a767-298ace1a0ec5"
+  }
  ]
 }

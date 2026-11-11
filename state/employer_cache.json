@@ -39,6 +39,10 @@
   "check",
   "Closest 501(c)(3) match: Aequo Foundation Inc (EIN 853667734); verify"
  ],
+ "aisles abroad": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "ait global": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -66,6 +70,10 @@
  "amentum": [
   "nonprofit",
   "IRS 501(c)(3): Amentum Collections Inc (EIN 981902003)"
+ ],
+ "american diabetes association": [
+  "nonprofit",
+  "IRS 501(c)(3): American Diabetes Association (EIN 541734511)"
  ],
  "americare certified special services": [
   "unknown",
@@ -116,6 +124,10 @@
   "IRS 501(c)(3): Arise (EIN 922561041)"
  ],
  "arthefy global staffing": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "asahi kasei therapeutics": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -174,6 +186,10 @@
  "baptist health south florida": [
   "nonprofit",
   "IRS 501(c)(3): Baptist Health Of South Florida Inc (EIN 650267668)"
+ ],
+ "barkleyokrp": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "bayforce": [
   "check",
@@ -383,6 +399,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "dat": [
+  "nonprofit",
+  "IRS 501(c)(3): Dat (EIN 920641482)"
+ ],
  "datassential": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -390,6 +410,14 @@
  "datavant": [
   "check",
   "Closest 501(c)(3) match: National Nutrient Databank Conference Steering Committee (EIN 201570501); verify"
+ ],
+ "delta group": [
+  "nonprofit",
+  "IRS 501(c)(3): Delta Charter Group (EIN 273126744)"
+ ],
+ "destination careers": [
+  "nonprofit",
+  "IRS 501(c)(3): Destination Dakota Legal Careers Inc (EIN 992351011)"
  ],
  "diceforce it": [
   "unknown",
@@ -438,6 +466,10 @@
  "evona": [
   "nonprofit",
   "IRS 501(c)(3): Evona Volunteer Fire Department (EIN 201718693)"
+ ],
+ "exalt health rehabilitation hospital sarasota": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "expert in recruitment solutions": [
   "unknown",
@@ -531,6 +563,10 @@
   "nonprofit",
   "IRS 501(c)(3): Brea Olinda High School Global Information Technology Academy (EIN 208935162)"
  ],
+ "glory": [
+  "nonprofit",
+  "IRS 501(c)(3): Glory (EIN 824901148)"
+ ],
  "govcio": [
   "nonprofit",
   "IRS 501(c)(3): Govi (EIN 471720098)"
@@ -607,9 +643,21 @@
   "check",
   "Closest 501(c)(3) match: Hibb Org (EIN 933288724); verify"
  ],
+ "highmark": [
+  "nonprofit",
+  "IRS 501(c)(3): Highmark Inc (EIN 582554484)"
+ ],
  "highmark health": [
   "nonprofit",
   "IRS 501(c)(3): Highmark Health (EIN 453674900)"
+ ],
+ "hiller companies": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "hilton": [
+  "nonprofit",
+  "IRS 501(c)(3): Hilton Haus (EIN 873847586)"
  ],
  "hinge health": [
   "unknown",
@@ -655,6 +703,10 @@
   "nonprofit",
   "IRS 501(c)(3): Innovate Inc (EIN 464124213)"
  ],
+ "innovative information technologies": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "insight global": [
   "nonprofit",
   "IRS 501(c)(3): Insight Global Initiative (EIN 995034544)"
@@ -668,6 +720,10 @@
   "IRS 501(c)(3): Intuitive Foundation (EIN 832210302)"
  ],
  "irvine technology": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "ivyrehab physical therapy ot slp pllc": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -704,6 +760,10 @@
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "kavi software technologies private limited": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "kdmc ashland hospital": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -772,6 +832,14 @@
   "IRS 501(c)(3): Medicus Corp (EIN 844894445)"
  ],
  "medline industries lp": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "meevo": [
+  "check",
+  "Closest 501(c)(3) match: Meeco Institute (EIN 813548497); verify"
+ ],
+ "merck sharp dohme": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -875,6 +943,10 @@
   "check",
   "Closest 501(c)(3) match: Optimal Medical Foundation Inc (EIN 311697776); verify"
  ],
+ "origence": [
+  "nonprofit",
+  "IRS 501(c)(3): Origenome Inc (EIN 881981322)"
+ ],
  "outlier ai": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -896,6 +968,10 @@
   "Closest 501(c)(3) match: Panoptic Professionals (EIN 473196045); verify"
  ],
  "parmesoft": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "physician health partners": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -995,9 +1071,17 @@
   "nonprofit",
   "IRS 501(c)(3): Vision Restoration Resource Center & Pathway To Logistics Employment (EIN 414914577)"
  ],
+ "reuters news media": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "rho": [
   "nonprofit",
   "IRS 501(c)(3): Beta Rho Chapter Sigma Phi Rho Fraternity Inc (EIN 882662976)"
+ ],
+ "rippling": [
+  "nonprofit",
+  "IRS 501(c)(3): Ripplin Inc (EIN 813491098)"
  ],
  "rji search": [
   "unknown",
@@ -1084,6 +1168,10 @@
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "second front systems": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "select division career page": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -1188,6 +1276,10 @@
   "Closest 501(c)(3) match: Stca (EIN 863920507); verify"
  ],
  "stellar it solution": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "stellar professionals": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -1315,6 +1407,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "turner townsend": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "twilio": [
   "check",
   "Closest 501(c)(3) match: Twii Foundation (EIN 471672038); verify"
@@ -1334,6 +1430,10 @@
  "upmc pittsburgh medical center": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "uponor": [
+  "check",
+  "Closest 501(c)(3) match: Upon The Path Inc (EIN 842450809); verify"
  ],
  "uptodate": [
   "unknown",
