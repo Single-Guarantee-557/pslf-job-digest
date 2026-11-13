@@ -3944,5 +3944,281 @@
    "title": "Product Manager, Wellbeing & Incentives",
    "url": "https://jobs.lever.co/quantum-health/8a13bc4e-7eb8-4e42-acf3-1a63ed62f357"
   }
+ ],
+ "2026-11-13": [
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Insight Global",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12961406",
+   "location": "Remote (Dayton, OH)",
+   "note": "IRS 501(c)(3): Insight Global Initiative (EIN 995034544)",
+   "posted": "2026-11-13",
+   "salary": "$21 /hr",
+   "source": "The Jobs API",
+   "title": "Community Health Worker (Lawrence)",
+   "url": "https://insightglobal.com/jobs/26aeb562-260b-405b-bbe3-f8e0ebe28251"
+  },
+  {
+   "apply": "https://recruiting.paylocity.com/Recruiting/Jobs/Apply/4664716",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "CloseKnit",
+   "hits": [
+    "nurse"
+   ],
+   "id": "thejobsapi:12961234",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Closeknit (EIN 474977811)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Mental Health Therapist - 1099 - Remote",
+   "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4664716"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Highmark Inc",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12961131",
+   "location": "Remote (Working at Home, PA)",
+   "note": "IRS 501(c)(3): Highmark Inc (EIN 582554484)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Pharmacist - Case and Disease Management (CMDM)",
+   "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Pharmacist---Case-and-Disease-Management--CMDM-_J290152-1"
+  },
+  {
+   "apply": "https://baptisthlth.taleo.net/careersection/2/jobdetail.ftl?job=164307",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Baptist Health South Florida",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12960484",
+   "location": "Remote (Florida)",
+   "note": "IRS 501(c)(3): Baptist Health Of South Florida Inc (EIN 650267668)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Patient Financial Associate, UCC Administration, FT, $1000 Bonus, Shift Varies",
+   "url": "https://careers.baptisthealth.net/us/en/job/BAHEUS164307ENUS/Patient-Financial-Associate-UCC-Administration-FT-1000-Bonus-Shift-Varies"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Quince",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12960478",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Quince Productions (EIN 271727352)",
+   "posted": "2026-05-20",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Sr. Manager, Global Communications",
+   "url": "https://job-boards.greenhouse.io/quince/jobs/5212484008"
+  },
+  {
+   "apply": "https://jobs.jobvite.com/resgroup/job/oCX6AfwZ/apply",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "RES",
+   "hits": [
+    "hospital"
+   ],
+   "id": "thejobsapi:12960048",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Rest (EIN 320210981)",
+   "posted": "2026-11-12",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Estimator - BESS",
+   "url": "https://jobs.jobvite.com/resgroup/job/oCX6AfwZ"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Henry Schein, Inc.",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12959991",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Henry Schein Cares Foundation Inc (EIN 264137268)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Strategic Account Specialist - Dialysis",
+   "url": "https://henryschein.wd1.myworkdayjobs.com/External_Careers/job/United-States---Remote/Strategic-Account-Specialist---Dialysis_R135966"
+  },
+  {
+   "apply": "https://jobs.smartrecruiters.com/AbbVie/3743990016846986-oncology-nurse-educator-manchester-nh?oga=true",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "AbbVie",
+   "hits": [
+    "nurse",
+    "nursing"
+   ],
+   "id": "thejobsapi:12958652",
+   "location": "Remote (Manchester, NH)",
+   "note": "IRS 501(c)(3): Abbvie Foundation (EIN 460827839)",
+   "posted": "2026-11-13",
+   "salary": "$109,500 \u2013 $208,500",
+   "source": "The Jobs API",
+   "title": "Oncology Nurse Educator- Manchester, NH",
+   "url": "https://jobs.smartrecruiters.com/AbbVie/3743990016846986-oncology-nurse-educator-manchester-nh"
+  },
+  {
+   "apply": "https://jobs.smartrecruiters.com/AbbVie/3743990016847246-oncology-nurse-educator-boise-id?oga=true",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "AbbVie",
+   "hits": [
+    "nurse",
+    "nursing"
+   ],
+   "id": "thejobsapi:12958651",
+   "location": "Remote (Boise, ID)",
+   "note": "IRS 501(c)(3): Abbvie Foundation (EIN 460827839)",
+   "posted": "2026-11-13",
+   "salary": "$109,500 \u2013 $208,500",
+   "source": "The Jobs API",
+   "title": "Oncology Nurse Educator- Boise, ID",
+   "url": "https://jobs.smartrecruiters.com/AbbVie/3743990016847246-oncology-nurse-educator-boise-id"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Airbnb",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12958369",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Airbnb Org Inc (EIN 833135259)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Software Engineer, Profile & Community, Web",
+   "url": "https://careers.airbnb.com/positions/8386065?gh_jid=8386065"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Airbnb",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12958368",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Airbnb Org Inc (EIN 833135259)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Software Engineer, Profile & Community, Android",
+   "url": "https://careers.airbnb.com/positions/8386083?gh_jid=8386083"
+  },
+  {
+   "apply": "https://jobs.smartrecruiters.com/EVERSANA1/744000161545209-vp-client-services?oga=true",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "EVERSANA",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12957619",
+   "location": "Remote (New York, NY)",
+   "note": "IRS 501(c)(3): Eversana Foundation Inc (EIN 922834350)",
+   "posted": "2026-11-13",
+   "salary": "$143,170 \u2013 $200,000",
+   "source": "The Jobs API",
+   "title": "VP, Client Services",
+   "url": "https://jobs.smartrecruiters.com/EVERSANA1/744000161545209-vp-client-services"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Philips",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12957540",
+   "location": "Remote (United States)",
+   "note": "IRS 501(c)(3): Philips Home (EIN 463266257)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Client Success Leader, North America",
+   "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/United-States-of-America---Remote-Based-United-States/Client-Success-Leader--North-America_594526"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Procom",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12957050",
+   "location": "Remote (New Jersey, NJ)",
+   "note": "IRS 501(c)(3): Proeco Inc (EIN 882925231)",
+   "posted": "2026-11-13",
+   "salary": "$48 /hr",
+   "source": "The Jobs API",
+   "title": "US - Recruiter III",
+   "url": "https://myprocom-portal.procomservices.com/jobs/us-recruiter-iii-new-jersey-e70dbed9"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Procom",
+   "hits": [
+    "equity"
+   ],
+   "id": "thejobsapi:12957047",
+   "location": "Remote (Greenville, SC)",
+   "note": "IRS 501(c)(3): Proeco Inc (EIN 882925231)",
+   "posted": "2026-11-13",
+   "salary": "$48 /hr",
+   "source": "The Jobs API",
+   "title": "US - Recruiter III",
+   "url": "https://myprocom-portal.procomservices.com/jobs/us-recruiter-iii-greenville-260ec35b"
+  },
+  {
+   "apply": "",
+   "category": "nonprofit",
+   "closes": "",
+   "employer": "Abilene Christian University",
+   "hits": [
+    "nursing"
+   ],
+   "id": "thejobsapi:12955980",
+   "location": "Remote (Dallas, TX)",
+   "note": "IRS 501(c)(3): Abilene Christian University (EIN 750851900)",
+   "posted": "2026-11-13",
+   "salary": "",
+   "source": "The Jobs API",
+   "title": "Adjunct Faculty - Undergraduate Healthcare Administration",
+   "url": "https://acu.wd108.myworkdayjobs.com/ACUCareers/job/Dallas-Texas/Adjunct-Faculty---Undergraduate-Healthcare-Administration_JR100521-1"
+  }
  ]
 }
