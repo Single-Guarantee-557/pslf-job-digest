@@ -391,6 +391,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "clera": [
+  "nonprofit",
+  "IRS 501(c)(3): Clear (EIN 882218433)"
+ ],
  "clifyx": [
   "check",
   "Closest 501(c)(3) match: Clift (EIN 830700136); verify"
@@ -444,6 +448,10 @@
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "corvel brand": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "corvel healthcare": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -755,6 +763,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "heredia counseling center": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "heritage landscape supply group": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -842,6 +854,10 @@
  "infilla": [
   "check",
   "Closest 501(c)(3) match: Infill Baltimore Inc (EIN 208350623); verify"
+ ],
+ "ingenesis": [
+  "check",
+  "Closest 501(c)(3) match: Ingeneus Project (EIN 364647639); verify"
  ],
  "innovage": [
   "nonprofit",
@@ -999,6 +1015,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "medatlantic healthcare solutions": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "medical university hospital authority muha": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -1119,6 +1139,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "ntt data americas": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "nvidia usa": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -1215,6 +1239,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "popmenu": [
+  "check",
+  "Closest 501(c)(3) match: Butler County Community Planning Group Visions Of Well Being (EIN 421507164); verify"
+ ],
  "postpartum support international": [
   "nonprofit",
   "IRS 501(c)(3): Postpartum Support International (EIN 770196208)"
@@ -1266,6 +1294,10 @@
  "qompyl": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "qualfon": [
+  "check",
+  "Closest 501(c)(3) match: Quadon Foundation (EIN 854178713); verify"
  ],
  "qualis1": [
   "check",
