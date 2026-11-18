@@ -1039,6 +1039,10 @@
   "nonprofit",
   "IRS 501(c)(3): Lifestance Health Foundation (EIN 871039909)"
  ],
+ "linc healthcare": [
+  "nonprofit",
+  "IRS 501(c)(3): Main Line Healthcare (EIN 232359401)"
+ ],
  "longroad energy management": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -1072,6 +1076,10 @@
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "medatlantic healthcare solutions": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "medbridge healthcare": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -1406,6 +1414,10 @@
  "quince": [
   "nonprofit",
   "IRS 501(c)(3): Quince Productions (EIN 271727352)"
+ ],
+ "radiology partners": [
+  "nonprofit",
+  "IRS 501(c)(3): Indiana Radiology Partners Inc (EIN 201017034)"
  ],
  "randstad usa": [
   "unknown",
@@ -1898,6 +1910,10 @@
  "umass memorial health care": [
   "nonprofit",
   "IRS 501(c)(3): Umass Memorial Health Care Inc (EIN 222605679)"
+ ],
+ "uniguest": [
+  "check",
+  "Closest 501(c)(3) match: Uniqes Foundation (EIN 393469965); verify"
  ],
  "united therapeutics": [
   "unknown",
