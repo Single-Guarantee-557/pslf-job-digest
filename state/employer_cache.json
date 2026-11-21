@@ -47,6 +47,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "addiction wellness center": [
+  "nonprofit",
+  "IRS 501(c)(3): Northern Minnesota Addiction Wellness Center Foundation (EIN 921514599)"
+ ],
  "addsource": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -88,6 +92,10 @@
   "IRS 501(c)(3): Onyx Allianz (EIN 932162582)"
  ],
  "alltrails": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "ally psychiatry career page": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -359,11 +367,23 @@
   "nonprofit",
   "IRS 501(c)(3): Capture Inc (EIN 562347070)"
  ],
+ "cardinal health": [
+  "nonprofit",
+  "IRS 501(c)(3): Cardinal Health Foundation (EIN 311746458)"
+ ],
  "cardinal health 110": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "cardinal health 200": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "carease health ny": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "carease health wi": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
@@ -1091,6 +1111,10 @@
   "nonprofit",
   "IRS 501(c)(3): Mantec Inc (EIN 232518545)"
  ],
+ "mantra health": [
+  "nonprofit",
+  "IRS 501(c)(3): Manatoa Health Inc (EIN 831698066)"
+ ],
  "mariner": [
   "nonprofit",
   "IRS 501(c)(3): Mariner Foundation (EIN 454997770)"
@@ -1214,6 +1238,10 @@
  "new silver": [
   "nonprofit",
   "IRS 501(c)(3): Silver Horizon New Mexico Inc (EIN 850279898)"
+ ],
+ "new york psychotherapy counseling center": [
+  "nonprofit",
+  "IRS 501(c)(3): New York Psychotherapy And Counseling Center (EIN 112320614)"
  ],
  "newave care": [
   "check",
@@ -1342,6 +1370,10 @@
  "peraton": [
   "check",
   "Closest 501(c)(3) match: Fcc Perryton (EIN 333784362); verify"
+ ],
+ "perry health": [
+  "nonprofit",
+  "IRS 501(c)(3): Perry County Health Foundation Inc (EIN 453835785)"
  ],
  "phathom pharmaceuticals": [
   "unknown",
