@@ -383,6 +383,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "carease health tn": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "carease health wi": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -759,6 +763,10 @@
   "nonprofit",
   "IRS 501(c)(3): Glory (EIN 824901148)"
  ],
+ "goto telemed": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "govcio": [
   "nonprofit",
   "IRS 501(c)(3): Govi (EIN 471720098)"
@@ -1078,6 +1086,10 @@
  "lhh": [
   "nonprofit",
   "IRS 501(c)(3): Lhh Foundation (EIN 932146838)"
+ ],
+ "lifebridge health": [
+  "nonprofit",
+  "IRS 501(c)(3): Lifebridge Health Inc (EIN 521402373)"
  ],
  "lifepro recruitment": [
   "unknown",
@@ -1746,6 +1758,10 @@
  "soliant health": [
   "check",
   "Closest 501(c)(3) match: Solano Coalition For Better Health (EIN 943189914); verify"
+ ],
+ "solution based therapeutics": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "south college": [
   "nonprofit",
