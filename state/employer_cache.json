@@ -1159,6 +1159,10 @@
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
+ "medwatch": [
+  "nonprofit",
+  "IRS 501(c)(3): Medmatch (EIN 392423088)"
+ ],
  "meevo": [
   "check",
   "Closest 501(c)(3) match: Meeco Institute (EIN 813548497); verify"
