@@ -407,6 +407,10 @@
   "nonprofit",
   "IRS 501(c)(3): Ccs Builds (EIN 922917028)"
  ],
+ "cedars sinai": [
+  "nonprofit",
+  "IRS 501(c)(3): Cedars-sinai Medical Center (EIN 951644600)"
+ ],
  "center for orthopedic research e": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -1006,6 +1010,10 @@
  "jerry ai": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "jobot": [
+  "check",
+  "Closest 501(c)(3) match: Jingle With Jobo Events (EIN 414619509); verify"
  ],
  "joveo": [
   "check",
