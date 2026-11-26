@@ -891,6 +891,10 @@
   "nonprofit",
   "IRS 501(c)(3): Hilton Haus (EIN 873847586)"
  ],
+ "hilton hotels": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
  "hinge health": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
@@ -982,6 +986,10 @@
  "intermountain health": [
   "nonprofit",
   "IRS 501(c)(3): Intermountain Health Care Inc (EIN 870269232)"
+ ],
+ "international medical placement ltd": [
+  "unknown",
+  "No 501(c)(3) match found; verify with the PSLF Help Tool"
  ],
  "intuitive": [
   "nonprofit",
@@ -2034,6 +2042,10 @@
  "united therapeutics": [
   "unknown",
   "No 501(c)(3) match found; verify with the PSLF Help Tool"
+ ],
+ "unitedhealth group": [
+  "nonprofit",
+  "IRS 501(c)(3): Unitedhealth Group Employee Assistance Fund (EIN 844228060)"
  ],
  "university arkansas for medical sciences": [
   "unknown",
